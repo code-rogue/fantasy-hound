@@ -1,0 +1,7 @@
+{
+    "statServer": {
+      "url": "http://localhost",
+      "port": 5000,
+      "timeout": 500000
+    }
+  }

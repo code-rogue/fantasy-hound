@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "paths": {
+        "@app/*": ["src/app/*"],
+        "@auth/*": ["src/auth/*"],
+        "@css/*": ["src/css/*"],
+        "@interfaces/*": ["src/interfaces/*"],
+        "@redux/*": ["src/redux/*"],
+        "@root/*": ["*"],
+        "@src/*": ["src/*"],
+      }
+    }
+  }
