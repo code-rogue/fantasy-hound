@@ -1,16 +1,20 @@
-import { GlobalState } from '@interfaces/state/global.state'
-import { SET_STATE_TOKEN, CLEAR_STATE_TOKEN } from '@redux/actions';
+import { AppState } from '@interfaces/state/appState'
+import { LOGIN, LOGOUT } from '@redux/actions';
 
-const initialState: GlobalState = {
-  accessToken: '',
+const initialState: AppState = {
+  auth: {
+    accessToken: localStorage.getItem('accessToken') || null,
+  }
 };
 
 const rootReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case SET_STATE_TOKEN:
+    case LOGIN:
+      localStorage.setItem('accessToken', action.payload);
       return { ...state, accessToken: action.payload };
-    case CLEAR_STATE_TOKEN:
-      return { ...state, accessToken: '' };
+    case LOGOUT:
+      localStorage.removeItem('accessToken');
+      return { ...state, accessToken: null };
     default:
       return state;
   }

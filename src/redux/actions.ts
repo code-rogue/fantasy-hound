@@ -1,15 +1,15 @@
-import { GlobalState } from '@interfaces/state/global.state'
+import { AppState } from '@interfaces/state/appState'
 
-export const SET_STATE_TOKEN = 'SET_STATE_TOKEN';
-export const CLEAR_STATE_TOKEN = 'CLEAR_STATE_TOKEN';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 
-export const selectAccessToken = (state: GlobalState) => state.accessToken;
+export const selectAccessToken = (state: AppState) => state.auth.accessToken;
 
-export const setStateToken = (value: string) => ({
-  type: SET_STATE_TOKEN,
-  payload: value,
+export const login = (accessToken: string) => ({
+  type: LOGIN,
+  payload: accessToken,
 });
 
-export const clearStateToken = () => ({
-  type: CLEAR_STATE_TOKEN,
+export const logout = () => ({
+  type: LOGOUT,
 });

@@ -1,0 +1,19 @@
+.topbar {
+    height: 50px;
+    background-color: #282c34;
+    color: RGB(51,255,51);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+  }
+
+  .topbar-sections {
+    padding: 0px 4px;
+  }
+  
+  .topbar-logo {
+    height: 6vmin;
+    width: 6vmin;
+    pointer-events: none;
+  }
