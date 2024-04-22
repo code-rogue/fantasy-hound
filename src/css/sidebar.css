@@ -1,13 +1,28 @@
 /* Sidebar container */
 .sidebar {
-    height: calc(100vh - 17px); /* Adjust sidebar height to fit below the top bar */
-    width: 200px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed position - stay in place */
-    top: 50; /* Place the sidebar at the top of the page */
-    left: 0; /* Place the sidebar on the left side */
     background-color: #282c34;
+    height: calc(100vh - 17px); /* Adjust sidebar height to fit below the top bar */
+    color: lime;
     transition: width 0.3s ease;
-  }
+    align-items: center;
+    text-align: left;
+    justify-content: left;
+    display: block;
+}
+
+.sidebar-button {
+    color: lime;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 12px;
+}
+
+.sidebar-unsed {
+  left: 0; /* Place the sidebar on the left side */
+  position: fixed; /* Fixed position - stay in place */
+  top: 50; /* Place the sidebar at the top of the page */
+  width: 200px; /* Set the width of the sidebar */
+}
   
   .sidebar.collapsed {
     width: 60px; /* Collapsed width of the sidebar */
@@ -20,7 +35,6 @@
   
   .sidebar li {
     list-style-type: none;
-    margin-bottom: 10px;
   }
 
   /* Style the sidebar links */
@@ -28,8 +42,8 @@
     padding: 8px 16px; /* Add padding to the links */
     text-decoration: none; /* Remove underline from links */
     font-size: 18px; /* Set the font size */
-    color: RGB(51,255,51);; /* Text color */
-    display: block; /* Make links block elements to fill the width */
+    color: RGB(51,255,51); /* Text color */
+    /*display: block;*/ /* Make links block elements to fill the width */
     text-align: left;
   }
   
@@ -40,8 +54,8 @@
   
   /* Main content area */
   .main-content {
-    margin-left: 250px; /* Set the margin to leave space for the sidebar */
-    padding: 20px; /* Add padding */
+    width: -webkit-fill-available;
+    height: calc(100vh - 17px);
   }
   
   /* Responsive layout - when the screen is less than 768px wide, make the sidebar and main content area stack on top of each other */

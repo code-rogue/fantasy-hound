@@ -1,9 +1,10 @@
 /* Main App Container */
 .main-content {
-    margin-left: 200px; /* Initial margin to accommodate the sidebar */
     transition: margin-left 0.3s ease; /* Smooth transition when sidebar collapses/expands */
     padding: 5px; /* Add padding for content */
     box-sizing: border-box; /* Include padding in the width calculation */
+    width: -webkit-fill-available;
+    height: calc(100vh - 17px);
   }
   
   /* Adjust main content margin when sidebar is collapsed */
