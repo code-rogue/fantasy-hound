@@ -1,12 +1,12 @@
 import '@css/app.css';
 import logo from '@src/logo.svg';
 
-function LandingPageToo() {
+function PlayerPage() {
   return (
-    <div >
+    <div>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-            Edit <code>src/Landing Page Too.tsx</code> and save to reload.
+            Edit <code>src/Player Page.tsx</code> and save to reload.
         </p>
         <a
             className="App-link"
@@ -20,4 +20,4 @@ function LandingPageToo() {
   );
 }
 
-export default LandingPageToo;
+export default PlayerPage;

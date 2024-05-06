@@ -1,13 +1,13 @@
 import { AppRoutes } from '@app/routes';
-import { AppState } from '@interfaces/state/appState';
 import { BrowserRouter as Router} from 'react-router-dom'
 import { 
   ChakraBaseProvider,
   extendBaseTheme,
   theme as chakraTheme,
  } from '@chakra-ui/react'
-import { login } from '@redux/actions';
-import { useSelector, useDispatch } from 'react-redux';
+ import { createTheme, ThemeProvider } from '@mui/material/styles';
+ import { login } from '@redux/actions';
+import {  useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import '@css/app.css';
@@ -20,9 +20,14 @@ const theme = extendBaseTheme({
   },
 })
 
+const muiTheme = createTheme({
+  palette: {
+    mode: 'light',
+  }
+});
+
 function App() {
   const dispatch = useDispatch();
-  const accessToken = useSelector((state: AppState) => state.auth.accessToken);
 
   // Check if access token exists on app start-up
   useEffect(() => {
@@ -34,9 +39,11 @@ function App() {
 
   return (
     <ChakraBaseProvider theme={theme}>
-      <Router>
-        <AppRoutes />
-      </Router>
+      <ThemeProvider theme={muiTheme}>
+        <Router>
+          <AppRoutes />
+        </Router>
+      </ThemeProvider>
     </ChakraBaseProvider>
   );
 }

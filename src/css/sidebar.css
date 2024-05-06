@@ -15,60 +15,18 @@
     display: flex;
     justify-content: flex-end;
     padding: 0 12px;
-}
-
-.sidebar-unsed {
-  left: 0; /* Place the sidebar on the left side */
-  position: fixed; /* Fixed position - stay in place */
-  top: 50; /* Place the sidebar at the top of the page */
-  width: 200px; /* Set the width of the sidebar */
+    font-size: medium !important;
 }
   
-  .sidebar.collapsed {
-    width: 60px; /* Collapsed width of the sidebar */
-  }
+/* Main content area */
+.main-content {
+  width: -webkit-fill-available;
+  height: calc(100vh - 17px);
+}
 
-  .sidebar ul {
-    padding: 0;
-    margin: 0;
+/* Responsive layout - when the screen is less than 768px wide, make the sidebar and main content area stack on top of each other */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px; /* Set initial width of sidebar when collapsed */
   }
-  
-  .sidebar li {
-    list-style-type: none;
-  }
-
-  /* Style the sidebar links */
-  .sidebar a {
-    padding: 8px 16px; /* Add padding to the links */
-    text-decoration: none; /* Remove underline from links */
-    font-size: 18px; /* Set the font size */
-    color: RGB(51,255,51); /* Text color */
-    /*display: block;*/ /* Make links block elements to fill the width */
-    text-align: left;
-  }
-  
-  /* On hover, add a grey background color */
-  .sidebar a:hover {
-    background-color: #555; /* Dark grey background color */
-  }
-  
-  /* Main content area */
-  .main-content {
-    width: -webkit-fill-available;
-    height: calc(100vh - 17px);
-  }
-  
-  /* Responsive layout - when the screen is less than 768px wide, make the sidebar and main content area stack on top of each other */
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 60px; /* Set initial width of sidebar when collapsed */
-    }
-  
-    .sidebar.collapsed {
-      width: 250px; /* Set width of sidebar when expanded */
-    }
-  
-    .sidebar a {
-      text-align: center;
-    }
-  }
+}

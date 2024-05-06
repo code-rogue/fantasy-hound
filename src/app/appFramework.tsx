@@ -5,8 +5,8 @@ import store from '@redux/store';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { MdHome, MdLogout } from "react-icons/md";
-import { Button, Container, IconButton, Link } from '@chakra-ui/react'
+import { MdHome, MdLogout, MdSearch } from "react-icons/md";
+import { Button, Container, IconButton } from '@chakra-ui/react'
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 
 import '@css/app.css';
@@ -23,8 +23,8 @@ function AppFramework() {
         navigate("/");
     };
 
-    const navigateHome2 = () => {
-        navigate("/home");
+    const navigateSearch = () => {
+        navigate("/search");
     };
 
     const toggleSidebar = () => {
@@ -69,7 +69,7 @@ function AppFramework() {
                             aria-label='Toggle Sidebar' 
                             icon={!collapsed ? <ArrowLeftIcon /> : <ArrowRightIcon />}
                             onClick={toggleSidebar} 
-                            size='sm'
+                            size='xs'
                         />
                     </Container>
                     <Container>
@@ -83,6 +83,7 @@ function AppFramework() {
                                             leftIcon={<MdHome />}
                                             onClick={navigateHome}
                                             iconSpacing='4px'
+                                            fontSize='medium'
                                         >{!collapsed ? 'Home' : ''}</Button>
                                     </li>
                                     <li>
@@ -90,10 +91,11 @@ function AppFramework() {
                                             aria-label='Home' 
                                             color='lime'
                                             colorScheme='lime'
-                                            leftIcon={<MdHome />}
-                                            onClick={navigateHome2}
+                                            leftIcon={<MdSearch />}
+                                            onClick={navigateSearch}
                                             iconSpacing='4px'
-                                        >{!collapsed ? 'Home 2' : ''}</Button>
+                                            fontSize='medium'
+                                        >{!collapsed ? 'Search' : ''}</Button>
                                     </li>
                                 </ul>
                             </nav>
