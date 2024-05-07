@@ -1,8 +1,8 @@
 /* Sidebar container */
 .sidebar {
-    background-color: #282c34;
+    background-color: #3498DB;
     height: calc(100vh - 17px); /* Adjust sidebar height to fit below the top bar */
-    color: lime;
+    color: white;
     transition: width 0.3s ease;
     align-items: center;
     text-align: left;
@@ -11,10 +11,8 @@
 }
 
 .sidebar-button {
-    color: lime;
+    color: white;
     display: flex;
-    justify-content: flex-end;
-    padding: 0 12px;
     font-size: medium !important;
 }
   
@@ -27,6 +25,6 @@
 /* Responsive layout - when the screen is less than 768px wide, make the sidebar and main content area stack on top of each other */
 @media (max-width: 768px) {
   .sidebar {
-    width: 60px; /* Set initial width of sidebar when collapsed */
+    min-width: 45px !important; /* Set initial width of sidebar when collapsed */
   }
 }

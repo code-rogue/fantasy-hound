@@ -102,11 +102,11 @@ const SearchPage: React.FC = () => {
       field: 'headshot_url', 
       headerName: '', 
       description: 'Player Headshot', 
-      width: 50, 
+      width: 70, 
       filterable: false,
       renderCell: (params: GridRenderCellParams<any, string>) => {
         return (
-          <Avatar alt="Image" src={params.value} sx={{ width: 40, height: 55 }} />
+          <Avatar alt="Image" src={params.value} sx={{ width: 50, height: 50 }} />
         );
       },
     },

@@ -1,7 +1,7 @@
 .topbar {
     height: 55px;
-    background-color: #282c34;
-    color: lime;
+    background-color: #3498DB;
+    color: white;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -13,13 +13,16 @@
   }
   
   .topbar-logo {
-    height: 6vmin;
-    width: 6vmin;
+    height: 75px;
+    width: 75px;
     pointer-events: none;
   }
 
   .topbar-app-label {
     width: 150px;
+    min-width: 150px;
+    font-size: large;
+    font-weight: 750;
   }
 
   .topbar-button-container {

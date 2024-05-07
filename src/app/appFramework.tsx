@@ -6,8 +6,14 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { MdHome, MdLogout, MdSearch } from "react-icons/md";
-import { Button, Container, IconButton } from '@chakra-ui/react'
-import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
+
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import useIsMobile from '@app/useIsMobile';
 
 import '@css/app.css';
 import '@css/main-content.css';
@@ -15,9 +21,13 @@ import '@css/sidebar.css';
 import '@css/topbar.css';
 
 function AppFramework() {
-    const [collapsed, setCollapsed] = useState(false);
+    let [collapsed, setCollapsed] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+
+    const isMobile = useIsMobile();
+    if(isMobile)
+        collapsed = true;
 
     const navigateHome = () => {
         navigate("/");
@@ -36,74 +46,116 @@ function AppFramework() {
         store.dispatch(logout());
         navigate("/login");
     };
-    
+
+    const sidebarWidth = !collapsed ? '200px' : '60px';
     return (
         <>
         <div className="App">
             {/* Top bar */}
-            <Container className="topbar">
+            <Container 
+                disableGutters 
+                className="topbar" 
+                maxWidth={false} 
+                sx={{
+                    display: 'flex',
+                }}
+            >
                 <div><img src={logo} className="topbar-logo" alt="logo" /></div>
                 <div className="topbar-app-label">Fantasy Hound</div>
-                <Container className="topbar-button-container">
-                    <IconButton className="topbar-button"
-                        variant='outline'
-                        colorScheme='lime'
-                        fontSize='20px'
+                <Container 
+                    className="topbar-button-container" 
+                    sx={{
+                        display: 'inline-flex',
+                        padding: '0px !important',
+                    }}
+                >
+                    <Button className="topbar-button"
                         aria-label='Log Out' 
-                        icon={<MdLogout />} 
+                        endIcon={<MdLogout />} 
                         onClick={userLogOut}
-                        size='sm' 
+                        size='large'
+                        sx={{
+                            color: 'white',
+                            margin: 0,
+                            padding: '0px !important',
+                        }}
+                        variant='text'
                     />
                 </Container>
             </Container>
 
-            <Container display='flex'>
+            <Container 
+                maxWidth={false} 
+                disableGutters 
+                sx={{
+                    display: 'flex'
+                }}
+            >
                 {/* Sidebar */}
-                <Container className="sidebar" 
-                    width={!collapsed ? '200px' : '60px'}
+                <Container 
+                    className="sidebar" 
+                    disableGutters
+                    sx={{
+                        width: !collapsed ? '150px' : '45px',
+                        minWidth: !collapsed ? '150px' : '45px',
+                    }}
                 >
-                    <Container className="sidebar-button">
-                        <IconButton 
-                            variant='outline'
-                            colorScheme='lime'
-                            aria-label='Toggle Sidebar' 
-                            icon={!collapsed ? <ArrowLeftIcon /> : <ArrowRightIcon />}
-                            onClick={toggleSidebar} 
-                            size='xs'
-                        />
-                    </Container>
-                    <Container>
-                            <nav>
-                                <ul>
-                                    <li>
-                                        <Button 
-                                            aria-label='Home' 
-                                            color='lime'
-                                            colorScheme='lime'
-                                            leftIcon={<MdHome />}
-                                            onClick={navigateHome}
-                                            iconSpacing='4px'
-                                            fontSize='medium'
-                                        >{!collapsed ? 'Home' : ''}</Button>
-                                    </li>
-                                    <li>
-                                        <Button 
-                                            aria-label='Home' 
-                                            color='lime'
-                                            colorScheme='lime'
-                                            leftIcon={<MdSearch />}
-                                            onClick={navigateSearch}
-                                            iconSpacing='4px'
-                                            fontSize='medium'
-                                        >{!collapsed ? 'Search' : ''}</Button>
-                                    </li>
-                                </ul>
-                            </nav>
-                    </Container>
+                    <Stack spacing={1}>
+                        <Container 
+                            className="sidebar-button"
+                            sx={{
+                                display: 'flex',
+                                justifyContent: !collapsed ? 'flex-end' : 'center',
+                                padding: '0px !important',
+                            }}
+                        >
+                            <Button 
+                                aria-label='Toggle Sidebar' 
+                                startIcon={!collapsed ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
+                                onClick={toggleSidebar}
+                                sx={{
+                                    color: 'white',
+                                    display: 'flex',
+                                    justifyContent: !collapsed ? 'flex-end' : 'center',
+                                    padding: '0px !important',
+                                }}
+                                variant='text'
+                                size='large'
+                            />
+                        </Container>
+                        <Button 
+                            aria-label='Home' 
+                            startIcon={<MdHome />}
+                            onClick={navigateHome}
+                            variant='text'
+                            sx={{
+                                color: 'white',
+                                justifyContent: !collapsed ? 'flex-start' : 'center',
+                            }}
+                        >
+                            {!collapsed ? 'Home' : ''}
+                        </Button>
+                        <Button 
+                            aria-label='Search' 
+                            startIcon={<MdSearch />}
+                            onClick={navigateSearch}
+                            variant='text'
+                            sx={{
+                                color: 'white',
+                                justifyContent: !collapsed ? 'flex-start' : 'center',
+                            }}
+                        >
+                            {!collapsed ? 'Search' : ''}
+                        </Button>
+                    </Stack>
                 </Container>
                 
                 {/* Main content */}
-                <Container className="main-content">
+                <Container 
+                    className="main-content"
+                    maxWidth={false}
+                    disableGutters
+                >
                     <Outlet />
                 </Container>
             </Container>
