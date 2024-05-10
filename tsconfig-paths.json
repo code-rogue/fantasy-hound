@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
       "paths": {
-        "@app/*": ["src/app/*"],
+        "@app/*": ["src/app/*"],        
         "@auth/*": ["src/auth/*"],
+        "@components/*": ["src/components/*"],
         "@css/*": ["src/css/*"],
         "@interfaces/*": ["src/interfaces/*"],
         "@redux/*": ["src/redux/*"],

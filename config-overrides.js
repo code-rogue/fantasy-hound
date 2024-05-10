@@ -5,6 +5,7 @@ module.exports = override(
   addWebpackAlias({
     '@app': path.resolve(__dirname, 'src/app'),
     '@auth': path.resolve(__dirname, 'src/auth'),
+    '@components': path.resolve(__dirname, 'src/components'),
     '@css': path.resolve(__dirname, 'src/css'),
     '@interfaces': path.resolve(__dirname, 'src/interfaces'),
     '@redux': path.resolve(__dirname, 'src/redux'),

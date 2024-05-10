@@ -15,7 +15,7 @@ import {
   GridRenderCellParams 
 } from '@mui/x-data-grid-premium';
 import Link from '@mui/material/Link';
-import { NFL_TEAMS, NFL_TEAM_NAMES } from '@interfaces/enums/teams.enums';
+import { NFL_TEAMS, NFL_TEAM_NAMES } from '@interfaces/enums/team.enums';
 import { NFL_POSITION_GROUPS } from '@interfaces/enums/position_groups.enums';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -106,7 +106,7 @@ const SearchPage: React.FC = () => {
       filterable: false,
       renderCell: (params: GridRenderCellParams<any, string>) => {
         return (
-          <Avatar alt="Image" src={params.value} sx={{ width: 50, height: 50 }} />
+          <Avatar alt="Image" src={params.value} sx={{ width: 30, height: 40 }} />
         );
       },
     },
@@ -216,9 +216,9 @@ const SearchPage: React.FC = () => {
                 paginationModel: { pageSize: 25, page: 0 }
               },
             }}
-            autoPageSize={true}
             autosizeOnMount={true}
             columns={columns}
+            density="compact"
             disableColumnMenu={true}
             disableColumnSorting            
             filterMode="server"

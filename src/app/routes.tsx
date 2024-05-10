@@ -2,7 +2,7 @@ import AppFramework from '@app/appFramework';
 import ErrorPage from "@app/errorPage";
 import LandingPage from '@app/landingPage';
 import SearchPage from '@app/searchPage';
-import PlayerPage from '@app/playerPage';
+import PlayerPage from '@components/players/playerPage';
 import LoginPage from '@auth/loginPage';
 import { Navigate, useLocation, Outlet  } from 'react-router-dom';
 import { Routes, Route} from 'react-router-dom'
