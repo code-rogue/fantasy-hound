@@ -1,4 +1,4 @@
-import { SeasonData } from '@interfaces/models/season';
+import { SeasonData } from '@interfaces/models/season/season';
 
 export interface Player {
     id: number,
@@ -32,5 +32,9 @@ export interface Player {
     draft_number: string,
     draft_round: string,
     season: string,
-    stats: SeasonData,
+    stats: SeasonData[],
+}
+
+export interface PlayerProps {
+  player?: Player;
 }

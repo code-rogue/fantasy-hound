@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 
 import PlayerAvatar from '@components/players/playerAvatar';
 import PlayerProfile from '@components/players/playerProfile';
+import PlayerStats from '@components/players/playerStats';
 
 const PlayerPage: React.FC = () => {
   const [player, setPlayer] = useState<Player>();
@@ -23,7 +24,7 @@ const PlayerPage: React.FC = () => {
   useEffect(() => {
     const path = window.location.pathname;
     const [_lead, _player, id] = path.split('/');
-    console.log('Player Id: ', id);
+    
     const player_id = parseInt(id);
     setPlayerId(player_id);
     fetchDataAndSetState(player_id);
@@ -33,11 +34,27 @@ const PlayerPage: React.FC = () => {
     <Container
       disableGutters
       sx={{ 
-        display: 'flex'
+        display: 'block'
       }}
     >
-      <PlayerAvatar player={player} />
-      <PlayerProfile player={player} />
+      <Container
+        disableGutters
+        sx={{ 
+          display: 'flex'
+        }}
+      >
+        <PlayerAvatar player={player} />
+        <PlayerProfile player={player} />
+      </Container>
+
+      <Container
+        disableGutters
+        sx={{ 
+          display: 'flex'
+        }}
+      >
+        <PlayerStats player={player} />
+      </Container>
     </Container>
   );
 }

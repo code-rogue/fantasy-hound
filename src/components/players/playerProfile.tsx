@@ -2,15 +2,13 @@ import Avatar from '@mui/material/Avatar';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { formatPlayerData, PlayerData } from '@components/players/utils/playerDataUtils';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import { Player } from '@interfaces/models/player';
-
 import React from 'react';
-
-import { UNAVAILABLE } from '@interfaces/constants/player.constants';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
 interface PlayerProps {
@@ -29,7 +27,7 @@ const PlayerProfile: React.FC<PlayerProps> = ({ player }) => {
           >
             <List sx={{ maxWidth: 200, bgcolor: 'background.paper' }}>
               <ListItem>
-                <ListItemText primary={player?.game_status ?? UNAVAILABLE} secondary="Status" />
+                <ListItemText primary={formatPlayerData(PlayerData.GameStatus, player?.game_status)} secondary="Status" />
                 <ListItemAvatar>
                   <Avatar sx={{ color: 'green' }}>
                     <VerifiedIcon />
@@ -37,34 +35,34 @@ const PlayerProfile: React.FC<PlayerProps> = ({ player }) => {
                 </ListItemAvatar>
               </ListItem>
               <ListItem>
-                <ListItemText primary={`# ${player?.jersey_number ?? UNAVAILABLE}`} secondary="Jersey Number" />
+                <ListItemText primary={`# ${formatPlayerData(PlayerData.JerseyNumber, player?.jersey_number)}`} secondary="Jersey Number" />
               </ListItem>
               <ListItem>
-                <ListItemText primary={player?.years_of_experience ?? UNAVAILABLE} secondary="Years of experience" />
+                <ListItemText primary={formatPlayerData(PlayerData.YearsExp, player?.years_of_experience)} secondary="Years of experience" />
               </ListItem>
             </List>
             
             <List sx={{ maxWidth: 150, bgcolor: 'background.paper' }}>
               <ListItem>
-                <ListItemText primary={player?.birth_date ?? UNAVAILABLE} secondary="Birth Date" />
+                <ListItemText primary={formatPlayerData(PlayerData.BirthDate, player?.birth_date)} secondary="Birth Date" />
               </ListItem>
               <ListItem>
-                <ListItemText primary={player?.height ?? UNAVAILABLE} secondary="Height" />
+                <ListItemText primary={formatPlayerData(PlayerData.Height, player?.height)} secondary="Height" />
               </ListItem>
               <ListItem>
-                <ListItemText primary={player?.weight ?? UNAVAILABLE} secondary="Weight" />
+                <ListItemText primary={formatPlayerData(PlayerData.Weight, player?.weight)} secondary="Weight" />
               </ListItem>
             </List>
 
-            <List sx={{ maxWidth: 175, bgcolor: 'background.paper' }}>
+            <List sx={{ maxWidth: 200, bgcolor: 'background.paper' }}>
               <ListItem>
-                <ListItemText primary={player?.rookie_year ?? UNAVAILABLE} secondary="Rookie Year" />
+                <ListItemText primary={formatPlayerData(PlayerData.RookieYear, player?.rookie_year)} secondary="Rookie Year" />
               </ListItem>
               <ListItem>
-                <ListItemText primary={player?.draft_number ?? UNAVAILABLE} secondary="Drafted (Overall)" />
+                <ListItemText primary={formatPlayerData(PlayerData.DraftNumber, player?.draft_number)} secondary="Drafted" />
               </ListItem>
               <ListItem>
-                <ListItemText primary={player?.draft_team ?? UNAVAILABLE} secondary="Drafted By" />
+                <ListItemText primary={formatPlayerData(PlayerData.DraftedBy, player?.draft_team)} secondary="Drafted By" />
               </ListItem>
             </List>
             
