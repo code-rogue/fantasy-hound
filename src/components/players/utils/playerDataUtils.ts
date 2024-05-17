@@ -13,6 +13,11 @@ export enum PlayerData {
     GamesStarted,
     Height,
     JerseyNumber,
+    KickAttemps,
+    KickBlocked,
+    KickLong,
+    KickMade,
+    KickMissed,
     Pass2PT,
     PassAirYards,
     PassAttempts,
@@ -56,8 +61,16 @@ export enum PlayerData {
 }
 
 export enum CalculatedData {
+    Kick40,
+    Kick50,
+    Kick60,    
+    KickPATPct,
+    KickPct, 
+    KickTotal,
+    KickTotalPAT,
+    KickU40,
     PassCompletionPercentage,
-    RecptionPercentage,
+    RecptionPercentage,    
 }
 
 export function formatPlayerData(dataPoint: PlayerData, data?: string | number | null): number | string {
@@ -66,9 +79,9 @@ export function formatPlayerData(dataPoint: PlayerData, data?: string | number |
     
     switch (dataPoint) {
         case PlayerData.Age:
-        
         case PlayerData.GamesPlayed:
         case PlayerData.GamesStarted:
+        case PlayerData.KickLong:
         case PlayerData.PassAirYards:
         case PlayerData.PassSack:
         case PlayerData.PassSackYards:
@@ -135,6 +148,10 @@ export function formatPlayerData(dataPoint: PlayerData, data?: string | number |
             return data.toFixed(2);
         }
         case PlayerData.Carries:
+        case PlayerData.KickAttemps:
+        case PlayerData.KickBlocked:
+        case PlayerData.KickMade:
+        case PlayerData.KickMissed:
         case PlayerData.Pass2PT:
         case PlayerData.PassAttempts:
         case PlayerData.PassCompletions:
@@ -185,11 +202,71 @@ export function formatPlayerData(dataPoint: PlayerData, data?: string | number |
     }
 }
 
+export function formatKickTotals(made?: string | null , missed?: string | null): string {
+    if (made === undefined || made === null|| missed === undefined || missed === null)
+        return UNAVAILABLE;
+    
+    const total = parseInt(made) + parseInt(missed);
+    return `${made}/${total}`;
+}
+
 export function formatCalulatedStats(stat: CalculatedData, data?: SeasonData | null): number | string {
     if (data === undefined || data === null || !data.stats)
         return UNAVAILABLE;
     
     switch (stat) {
+        case CalculatedData.KickPct: {
+            if (!data.stats.kick) 
+                return UNAVAILABLE;
+
+            const { fg_att, fg_made } = data.stats.kick;
+            if (fg_att == null || fg_made === null)
+                return 0;
+
+            return ((parseInt(fg_made) / parseInt(fg_att)) * 100).toFixed(1);
+        }
+        case CalculatedData.KickPATPct: {
+            if (!data.stats.kick) 
+                return UNAVAILABLE;
+
+            const { pat_att, pat_made } = data.stats.kick;
+            if (pat_att == null || pat_made === null)
+                return 0;
+
+            return ((parseInt(pat_made) / parseInt(pat_att)) * 100).toFixed(1);
+        }
+        case CalculatedData.KickU40: {
+            if (!data.stats.kick) 
+                return UNAVAILABLE;
+
+            const { kick } = data.stats;
+            const made = parseInt(kick?.fg_made_0_19 ?? '0') + parseInt(kick?.fg_made_20_29 ?? '0') + parseInt(kick?.fg_made_30_39 ?? '0');
+            const missed = parseInt(kick?.fg_missed_0_19 ?? '0') + parseInt(kick?.fg_missed_20_29 ?? '0') + parseInt(kick?.fg_missed_30_39 ?? '0');
+            return formatKickTotals(made.toString(), missed.toString());
+        }
+        case CalculatedData.Kick40: {
+            return formatKickTotals(data.stats.kick?.fg_made_40_49, data.stats.kick?.fg_missed_40_49);
+        }
+        case CalculatedData.Kick50: {
+            return formatKickTotals(data.stats.kick?.fg_made_50_59, data.stats.kick?.fg_missed_50_59);
+        }
+        case CalculatedData.Kick60: {
+            return formatKickTotals(data.stats.kick?.fg_made_60_, data.stats.kick?.fg_missed_60_);
+        }
+        case CalculatedData.KickTotal: {
+            if (!data.stats.kick) 
+                return UNAVAILABLE;
+            
+            const { fg_made: made, fg_missed: missed, } = data.stats.kick;
+            return formatKickTotals(made, missed);
+        }
+        case CalculatedData.KickTotalPAT: {
+            if (!data.stats.kick) 
+                return UNAVAILABLE;
+            
+            const { pat_made: made, pat_missed: missed, } = data.stats.kick;
+            return formatKickTotals(made, missed);
+        }
         case CalculatedData.PassCompletionPercentage: {
             if (!data.stats.pass)
                 return UNAVAILABLE;

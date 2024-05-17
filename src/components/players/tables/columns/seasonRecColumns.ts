@@ -8,23 +8,27 @@ import { GridColDef } from '@mui/x-data-grid';
 import { SeasonData } from '@interfaces/models/season/season';
 
 export function seasonRecTargetsColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Targets', 
         field: 'stats.rec.targets', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'TGT', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecTargets, row.stats?.rec?.targets);
         },
-        width: 70,
+        width: 65,
     }
 }
 
 export function seasonRecTargetShareColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Target Share', 
         field: 'stats.rec.target_share', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'TGT %', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecTargetShare, row.stats?.rec?.target_share);
@@ -34,10 +38,12 @@ export function seasonRecTargetShareColumn(): GridColDef {
 }
 
 export function seasonRecptionsColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Receptions',
         field: 'stats.rec.receptions', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'REC',
         valueGetter: (_v, row: SeasonData) => {
         return formatPlayerData(PlayerData.Receptions, row.stats?.rec?.receptions);
@@ -47,10 +53,12 @@ export function seasonRecptionsColumn(): GridColDef {
 }
 
 export function seasonReceptionPercentColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Reception %',
         field: 'stats.rec', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'REC %', 
         valueGetter: (_v, row: SeasonData) => {
         return formatCalulatedStats(CalculatedData.RecptionPercentage, row);
@@ -60,10 +68,12 @@ export function seasonReceptionPercentColumn(): GridColDef {
 } 
 
 export function seasonRecYardsColumn(): GridColDef {
-    return {         
+    return {
+        align: 'center',
         description: 'Receiving Yards', 
         field: 'stats.rec.rec_yards', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'YDS', 
         valueGetter: (_v, row: SeasonData) => {
         return formatPlayerData(PlayerData.RecYards, row.stats?.rec?.rec_yards);
@@ -73,10 +83,12 @@ export function seasonRecYardsColumn(): GridColDef {
 }
 
 export function seasonRecYACColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Yards After the Catch', 
         field: 'stats.rec.rec_yards_after_catch', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'YAC', 
         valueGetter: (_v, row: SeasonData) => {
         return formatPlayerData(PlayerData.RecYAC, row.stats?.rec?.rec_yards_after_catch);
@@ -86,10 +98,12 @@ export function seasonRecYACColumn(): GridColDef {
 }
 
 export function seasonRecAirYardsColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Air Yards', 
         field: 'stats.rec.rec_air_yards', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'AY', 
         valueGetter: (_v, row: SeasonData) => {
         return formatPlayerData(PlayerData.RecAirYards, row.stats?.rec?.rec_air_yards);
@@ -99,10 +113,12 @@ export function seasonRecAirYardsColumn(): GridColDef {
 }
           
 export function seasonRecAirYardShareColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Air Yards Share', 
         field: 'stats.rec.rec_air_yards_share', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'AYS', 
         valueGetter: (_v, row: SeasonData) => {
         return formatPlayerData(PlayerData.RecAirYardsShare, row.stats?.rec?.rec_air_yards_share);
@@ -112,10 +128,12 @@ export function seasonRecAirYardShareColumn(): GridColDef {
 }
             
 export function seasonRecRACRColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Receiver Air Conversion Ratio', 
         field: 'stats.rec.rec_air_conversion_ratio', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'RACR', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecRACR, row.stats?.rec?.rec_air_conversion_ratio);
@@ -125,10 +143,12 @@ export function seasonRecRACRColumn(): GridColDef {
 }
 
 export function seasonRecWOPRColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Weighted Opportunity Rating', 
         field: 'stats.rec.weighted_opportunity_rating', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'WOPR', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecWOPR, row.stats?.rec?.weighted_opportunity_rating);
@@ -138,10 +158,12 @@ export function seasonRecWOPRColumn(): GridColDef {
 }
 
 export function seasonRecEPAColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Total Expected Points Added when receiver was targeted', 
         field: 'stats.rec.rec_epa', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'EPA', 
         valueGetter: (_v, row: SeasonData) => {
         return formatPlayerData(PlayerData.RecEPA, row.stats?.rec?.rec_epa);
@@ -151,10 +173,12 @@ export function seasonRecEPAColumn(): GridColDef {
 }
 
 export function seasonRecTDsColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Touchdowns', 
         field: 'stats.rec.rec_tds', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'TD', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecTD, row.stats?.rec?.rec_tds);
@@ -164,11 +188,13 @@ export function seasonRecTDsColumn(): GridColDef {
 }
             
 export function seasonRec2PTsColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: '2pt Conversions',
         field: 'stats.rec.rec_two_pt_conversions', 
         filterable: false,
         headerName: '2PT',
+        headerAlign: 'center',
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.Rec2PT, row.stats?.rec?.rec_two_pt_conversions);
         },
@@ -177,10 +203,12 @@ export function seasonRec2PTsColumn(): GridColDef {
 }
 
 export function seasonRecFirstDownsColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Receptions which result in a First Down', 
         field: 'stats.rec.rec_first_downs', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'FD', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecFD, row.stats?.rec?.rec_first_downs);
@@ -190,10 +218,12 @@ export function seasonRecFirstDownsColumn(): GridColDef {
 }
             
 export function seasonRecFumblesColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Fumbles', 
         field: 'stats.rec.rec_fumbles',
         filterable: false,
+        headerAlign: 'center',
         headerName: 'FUM', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecFumbles, row.stats?.rec?.rec_fumbles);
@@ -203,10 +233,12 @@ export function seasonRecFumblesColumn(): GridColDef {
 }
 
 export function seasonRecFumblesLostColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',
         description: 'Fumbles Lost', 
         field: 'stats.rec.rec_fumbles_lost',
         filterable: false,
+        headerAlign: 'center',
         headerName: 'LST', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecFumblesLost, row.stats?.rec?.rec_fumbles_lost);

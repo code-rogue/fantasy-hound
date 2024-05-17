@@ -2,10 +2,12 @@ import {  formatPlayerData, PlayerData } from '@components/players/utils/playerD
 import { GridColDef } from '@mui/x-data-grid';
 
 export function seasonColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center',  
         description: 'Season', 
         field: 'season', 
         filterable: false,
+        headerAlign: 'center',
         headerName: 'Season', 
         hideable: false,
         width: 80,
@@ -22,8 +24,10 @@ export function seasonPlayerIdColumn(): GridColDef {
 }
 
 export function seasonAgeColumn(): GridColDef {
-    return { 
+    return {
+        align: 'center', 
         field: 'age', 
+        headerAlign: 'center',
         headerName: 'Age', 
         description: 'Player Age', 
         filterable: false,
@@ -34,8 +38,10 @@ export function seasonAgeColumn(): GridColDef {
 }
 export function seasonGamesPlayedColumn(): GridColDef {
     return { 
+        align: 'center',
         field: 'games_played', 
-        headerName: '# Games', 
+        headerAlign: 'center',
+        headerName: '# Games',         
         description: 'Games Played', 
         filterable: false,
         valueGetter: (_v, row) => {
@@ -46,19 +52,23 @@ export function seasonGamesPlayedColumn(): GridColDef {
 
 export function seasonNonPPRPointsColumn(): GridColDef {
     return { 
+        align: 'center',
         field: 'fantasy_points', 
+        headerAlign: 'center',
         headerName: 'Non-PPR', 
         description: 'Non-PPR Fantasy Points', 
         filterable: false,
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.Points, row.fantasy_points);
-        }
+        },
     }
 }
 
 export function seasonPPRPointsColumn(): GridColDef {
     return { 
+        align: 'center',
         field: 'fantasy_points_ppr', 
+        headerAlign: 'center',
         headerName: 'PPR', 
         description: 'PPR Fantasy Points', 
         filterable: false,

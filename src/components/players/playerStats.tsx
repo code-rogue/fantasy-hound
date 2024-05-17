@@ -3,6 +3,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { NFL_POSITION_GROUPS } from '@interfaces/enums/position_groups.enums';
 import PlayerCareerTable from '@components/players/tables/playerCareerTable';
+import PlayerDefTable from '@components/players/tables/playerDefTable';
+import PlayerKickTable from '@components/players/tables/playerKickTable';
 import PlayerPassTable from '@components/players/tables/playerPassTable';
 import PlayerRecTable from '@components/players/tables/playerRecTable';
 import PlayerRushTable from '@components/players/tables/playerRushTable';
@@ -53,20 +55,25 @@ const PlayerStats: React.FC<PlayerProps> = ({ player }) => {
         }
     }
 
+    const offense = isOffense();
+    const def = isDefense();
+    const specialTeams = isSpecialTeams();
+
     let defTab;
     let kickTab;
     let passTab;
     let recTab;
     let rushTab;
-    if (isOffense()) {
+    if (offense || specialTeams) {
         passTab = <Tab label="Passing" value="pass" />;
-        recTab = <Tab label="Receiving" value="rec" />;
+        if(!specialTeams)
+            recTab = <Tab label="Receiving" value="rec" />;
         rushTab = <Tab label="Rushing" value="rush" />;
     }
-    if (isDefense()) {
+    if (def) {
         defTab = <Tab label="Defense" value="def" />;
     }
-    if (isSpecialTeams()) {
+    if (specialTeams) {
         kickTab = <Tab label="Kicking" value="kick" />;
     }
 
@@ -87,6 +94,12 @@ const PlayerStats: React.FC<PlayerProps> = ({ player }) => {
                         </Box>
                         <TabPanel value="career">
                             <PlayerCareerTable player={player} />
+                        </TabPanel>
+                        <TabPanel value="def">
+                            <PlayerDefTable player={player} />
+                        </TabPanel>
+                        <TabPanel value="kick">
+                            <PlayerKickTable player={player} />
                         </TabPanel>
                         <TabPanel value="pass">
                             <PlayerPassTable player={player} />

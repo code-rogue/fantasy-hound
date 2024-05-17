@@ -35,14 +35,14 @@ const PlayerRecTable: React.FC<PlayerProps> = ({ player }) => {
       seasonRecYACColumn(),
       seasonRecAirYardsColumn(),
       seasonRecAirYardShareColumn(),
-      seasonRecRACRColumn(),
-      seasonRecWOPRColumn(),
-      seasonRecEPAColumn(),
       seasonRecTDsColumn(),
       seasonRec2PTsColumn(),
       seasonRecFirstDownsColumn(),
       seasonRecFumblesColumn(),
       seasonRecFumblesLostColumn(),
+      seasonRecRACRColumn(),
+      seasonRecWOPRColumn(),
+      seasonRecEPAColumn(),
       seasonPlayerIdColumn()
     ];
       

@@ -21,13 +21,13 @@ import {
 const PlayerRushTable: React.FC<PlayerProps> = ({ player }) => {
     const columns: GridColDef[] = [
       seasonColumn(),
-      seasonRushYardsColumn(),
-      seasonRushFirstDownsColumn(),
-      seasonRush2PTsColumn(),
+      seasonRushYardsColumn(),      
       seasonRushTDsColumn(),
-      seasonReturnTDsColumn(),
+      seasonRush2PTsColumn(),
+      seasonRushFirstDownsColumn(),      
       seasonRushFumblesColumn(),
       seasonRushFumblesLostColumn(),
+      seasonReturnTDsColumn(),      
       seasonPlayerIdColumn()
     ];
       

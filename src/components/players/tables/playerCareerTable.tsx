@@ -36,6 +36,14 @@ const PlayerCareerTable: React.FC<PlayerProps> = ({ player }) => {
             disableColumnSorting            
             pageSizeOptions={[]}
             rows={player?.stats ?? []}
+            columnGroupingModel={[
+                {
+                  groupId: 'pts',
+                  headerName: 'Points',
+                  headerAlign: 'center',
+                  children: [{ field: 'fantasy_points' }, { field: 'fantasy_points_ppr' }],
+                },
+            ]}
         />
       );
 };

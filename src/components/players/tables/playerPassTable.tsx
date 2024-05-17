@@ -32,15 +32,15 @@ const PlayerPassTable: React.FC<PlayerProps> = ({ player }) => {
       seasonPassCompletionPercentColumn(),
       seasonPassYardsColumn(),
       seasonPassAirYardsColumn(),
-      seasonPassEPAColumn(),
-      seasonPassDakotaColumn(),
       seasonPassTDsColumn(),
       seasonPass2PTsColumn(),
       seasonPassINTsColumn(),
-      seasonPassSackFumblesColumn(),
-      seasonPassSackFumblesLostColumn(),
       seasonPassSacksColumn(),
       seasonPassSackYardsColumn(),
+      seasonPassSackFumblesColumn(),
+      seasonPassSackFumblesLostColumn(),
+      seasonPassEPAColumn(),
+      seasonPassDakotaColumn(),
       seasonPlayerIdColumn()
     ];
       
@@ -60,6 +60,19 @@ const PlayerPassTable: React.FC<PlayerProps> = ({ player }) => {
             disableColumnSorting            
             pageSizeOptions={[]}
             rows={player?.stats ?? []}
+            columnGroupingModel={[
+              {
+                groupId: 'sack',
+                headerName: 'Sacks',
+                headerAlign: 'center',
+                children: [
+                  { field: 'stats.pass.sack_fumbles' }, 
+                  { field: 'stats.pass.sack_fumbles_lost' },
+                  { field: 'stats.pass.sacks' },
+                  { field: 'stats.pass.sack_yards' }
+                ],
+              },
+          ]}
         />
       );
 };
