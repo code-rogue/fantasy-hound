@@ -1,4 +1,5 @@
-import {  formatPlayerData, PlayerData } from '@components/players/utils/playerDataUtils';
+import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
+import { formatCalulatedStats, formatPlayerData } from '@components/players/utils/playerDataUtils';
 import { GridColDef } from '@mui/x-data-grid';
 
 export function seasonColumn(): GridColDef {
@@ -33,7 +34,8 @@ export function seasonAgeColumn(): GridColDef {
         filterable: false,
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.Age, row.age);
-      }
+        },
+        width: 60,
     }
 }
 export function seasonGamesPlayedColumn(): GridColDef {
@@ -46,7 +48,8 @@ export function seasonGamesPlayedColumn(): GridColDef {
         filterable: false,
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.GamesPlayed, row.games_played);
-      }
+        },
+        width: 90,
     }
 }
 
@@ -55,12 +58,28 @@ export function seasonNonPPRPointsColumn(): GridColDef {
         align: 'center',
         field: 'fantasy_points', 
         headerAlign: 'center',
-        headerName: 'Non-PPR', 
-        description: 'Non-PPR Fantasy Points', 
+        headerName: 'Total', 
+        description: 'Non-PPR Fantasy Points',
         filterable: false,
         valueGetter: (_v, row) => {
-            return formatPlayerData(PlayerData.Points, row.fantasy_points);
+            return formatPlayerData(PlayerData.PPRPoints, row.fantasy_points);
         },
+        width: 80,
+    }
+}
+
+export function seasonNonPPRPointsPerGameColumn(): GridColDef {
+    return { 
+        align: 'center',
+        field: 'fantasy_points_per_game', 
+        headerAlign: 'center',
+        headerName: 'Avg', 
+        description: 'Non-PPR Fantasy Points per Game', 
+        filterable: false,
+        valueGetter: (_v, row) => {
+            return formatCalulatedStats(CalculatedData.PointsPerGame, row);
+        },
+        width: 60,
     }
 }
 
@@ -69,11 +88,27 @@ export function seasonPPRPointsColumn(): GridColDef {
         align: 'center',
         field: 'fantasy_points_ppr', 
         headerAlign: 'center',
-        headerName: 'PPR', 
+        headerName: 'Total', 
         description: 'PPR Fantasy Points', 
         filterable: false,
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.PPRPoints, row.fantasy_points_ppr);
-      }
+        },
+        width: 80,
+    }
+}
+
+export function seasonPPRPointsPerGameColumn(): GridColDef {
+    return { 
+        align: 'center',
+        field: 'fantasy_points_ppr_per_game', 
+        headerAlign: 'center',
+        headerName: 'Avg',
+        description: 'PPR Fantasy Points per Game', 
+        filterable: false,
+        valueGetter: (_v, row) => {
+            return formatCalulatedStats(CalculatedData.PPRPointsPerGame, row);
+        },
+        width: 60,
     }
 }

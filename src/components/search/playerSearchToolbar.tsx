@@ -57,6 +57,9 @@ const PlayerSearchToolbar: React.FC<PlayerSearchProps> = ({
           <ToggleButton value="WR">{NFL_POSITION_GROUPS.WR}</ToggleButton>
           <ToggleButton value="TE">{NFL_POSITION_GROUPS.TE}</ToggleButton>
           <ToggleButton value="SPEC">K</ToggleButton>
+          <ToggleButton value="DL">{NFL_POSITION_GROUPS.DL}</ToggleButton>
+          <ToggleButton value="LB">{NFL_POSITION_GROUPS.LB}</ToggleButton>
+          <ToggleButton value="DB">{NFL_POSITION_GROUPS.DB}</ToggleButton>
         </ToggleButtonGroup>
         <FormControlLabel control={
           <Switch 

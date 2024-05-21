@@ -36,9 +36,9 @@ import {
         seasonDefAssistedTacklesColumn(),
         seasonDefTacklesForLostColumn(),
         seasonDefTackleYardsLostColumn(),
-        seasonDefQBHitsColumn(),
         seasonDefSacksColumn(),
-        seasonDefSackYardsColumn(),        
+        seasonDefSackYardsColumn(),
+        seasonDefQBHitsColumn(),    
         seasonDefFumblesForcedColumn(),
         seasonDefFumblesRecoveredColumn(),
         seasonDefPassDefendedColumn(),
@@ -76,6 +76,13 @@ import {
                   { field: 'stats.def.tackles' }, 
                   { field: 'stats.def.tackles_solo' }, 
                   { field: 'stats.def.tackle_with_assists' },
+                ],
+              },
+              {
+                groupId: 'tfl',
+                headerName: 'TFL',
+                headerAlign: 'center',
+                children: [
                   { field: 'stats.def.tackles_for_loss' },
                   { field: 'stats.def.tackles_for_loss_yards' }
                 ],

@@ -1,9 +1,5 @@
-import { 
-    CalculatedData, 
-    formatCalulatedStats,
-    formatPlayerData, 
-    PlayerData
-} from '@components/players/utils/playerDataUtils';
+import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
+import { formatCalulatedStats, formatPlayerData } from '@components/players/utils/playerDataUtils';
 import { GridColDef } from '@mui/x-data-grid';
 import { SeasonData } from '@interfaces/models/season/season';
 
@@ -14,7 +10,7 @@ export function seasonRecTargetsColumn(): GridColDef {
         field: 'stats.rec.targets', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'TGT', 
+        headerName: 'Total', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecTargets, row.stats?.rec?.targets);
         },
@@ -29,7 +25,7 @@ export function seasonRecTargetShareColumn(): GridColDef {
         field: 'stats.rec.target_share', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'TGT %', 
+        headerName: '%', 
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecTargetShare, row.stats?.rec?.target_share);
         },
@@ -44,7 +40,7 @@ export function seasonRecptionsColumn(): GridColDef {
         field: 'stats.rec.receptions', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'REC',
+        headerName: 'Total',
         valueGetter: (_v, row: SeasonData) => {
         return formatPlayerData(PlayerData.Receptions, row.stats?.rec?.receptions);
         },
@@ -59,7 +55,7 @@ export function seasonReceptionPercentColumn(): GridColDef {
         field: 'stats.rec', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'REC %', 
+        headerName: '%', 
         valueGetter: (_v, row: SeasonData) => {
         return formatCalulatedStats(CalculatedData.RecptionPercentage, row);
         },
@@ -104,7 +100,7 @@ export function seasonRecAirYardsColumn(): GridColDef {
         field: 'stats.rec.rec_air_yards', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'AY', 
+        headerName: 'Total', 
         valueGetter: (_v, row: SeasonData) => {
         return formatPlayerData(PlayerData.RecAirYards, row.stats?.rec?.rec_air_yards);
     },
@@ -119,7 +115,7 @@ export function seasonRecAirYardShareColumn(): GridColDef {
         field: 'stats.rec.rec_air_yards_share', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'AYS', 
+        headerName: '%', 
         valueGetter: (_v, row: SeasonData) => {
         return formatPlayerData(PlayerData.RecAirYardsShare, row.stats?.rec?.rec_air_yards_share);
         },
@@ -138,7 +134,7 @@ export function seasonRecRACRColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecRACR, row.stats?.rec?.rec_air_conversion_ratio);
         },
-        width: 65,
+        width: 70,
     }
 }
 

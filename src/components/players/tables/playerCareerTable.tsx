@@ -6,7 +6,9 @@ import {
     seasonColumn,
     seasonGamesPlayedColumn,
     seasonNonPPRPointsColumn,
+    seasonNonPPRPointsPerGameColumn,
     seasonPPRPointsColumn,
+    seasonPPRPointsPerGameColumn,
     seasonPlayerIdColumn 
   } from '@components/players/tables/columns/seasonColumns';
 
@@ -16,7 +18,9 @@ const PlayerCareerTable: React.FC<PlayerProps> = ({ player }) => {
         seasonAgeColumn(),
         seasonGamesPlayedColumn(),
         seasonPPRPointsColumn(),
+        seasonPPRPointsPerGameColumn(),
         seasonNonPPRPointsColumn(),
+        seasonNonPPRPointsPerGameColumn(),        
         seasonPlayerIdColumn()
     ];
     
@@ -38,10 +42,22 @@ const PlayerCareerTable: React.FC<PlayerProps> = ({ player }) => {
             rows={player?.stats ?? []}
             columnGroupingModel={[
                 {
-                  groupId: 'pts',
-                  headerName: 'Points',
-                  headerAlign: 'center',
-                  children: [{ field: 'fantasy_points' }, { field: 'fantasy_points_ppr' }],
+                    groupId: 'non-ppr',
+                    headerName: 'Non-PPR',
+                    headerAlign: 'center',
+                    children: [
+                        { field: 'fantasy_points' }, 
+                        { field: 'fantasy_points_per_game' },
+                    ],
+                },
+                {
+                    groupId: 'ppr',
+                    headerName: 'PPR',
+                    headerAlign: 'center',
+                    children: [
+                        { field: 'fantasy_points_ppr' },
+                        { field: 'fantasy_points_ppr_per_game' }
+                    ],
                 },
             ]}
         />

@@ -1,9 +1,37 @@
-import { 
-    formatPlayerData, 
-    PlayerData
-} from '@components/players/utils/playerDataUtils';
+import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
+import { formatCalulatedStats, formatPlayerData } from '@components/players/utils/playerDataUtils';
 import { GridColDef } from '@mui/x-data-grid';
 import { SeasonData } from '@interfaces/models/season/season';
+
+export function seasonRushCarriesColumn(): GridColDef {
+    return {
+        align: 'center',
+        description: 'Carries', 
+        field: 'stats.rush.carries', 
+        filterable: false,
+        headerAlign: 'center',
+        headerName: 'Total', 
+        valueGetter: (_v, row: SeasonData) => {
+            return formatPlayerData(PlayerData.RushCarries, row.stats?.rush?.carries);
+        },
+        width: 60,
+    };
+}
+
+export function seasonRushYPCColumn(): GridColDef {
+    return {
+        align: 'center',
+        description: 'Yards per Carry', 
+        field: 'stats.rush.yards_per_carry', 
+        filterable: false,
+        headerAlign: 'center',
+        headerName: 'YPC', 
+        valueGetter: (_v, row: SeasonData) => {
+            return formatCalulatedStats(CalculatedData.RushYardsPerCarry, row);
+        },
+        width: 60,
+    };
+}
 
 export function seasonRushYardsColumn(): GridColDef {
     return {

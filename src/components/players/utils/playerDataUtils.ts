@@ -1,77 +1,6 @@
 import { SeasonData } from '@interfaces/models/season/season';
 import { UNAVAILABLE } from '@interfaces/constants/player.constants';
-
-export enum PlayerData {
-    Age,
-    BirthDate,
-    Carries,
-    Dakota,
-    DraftNumber,
-    DraftedBy,
-    GamesPlayed,
-    GameStatus,
-    GamesStarted,
-    Height,
-    JerseyNumber,
-    KickAttemps,
-    KickBlocked,
-    KickLong,
-    KickMade,
-    KickMissed,
-    Pass2PT,
-    PassAirYards,
-    PassAttempts,
-    PassCompletions,
-    PassEPA,
-    PassInt,
-    PassSack,
-    PassSackFumbles,
-    PassSackFumblesLost,
-    PassSackYards,
-    PassTD,
-    PassYards,    
-    Points,
-    PPRPoints,
-    Rec2PT,
-    RecAirYards,
-    RecAirYardsShare,
-    RecEPA,
-    Receptions,
-    RecFD,
-    RecFumbles,
-    RecFumblesLost,
-    RecRACR,
-    RecTargets,
-    RecTargetShare,
-    RecTD,
-    RecWOPR,
-    RecYAC,
-    RecYards,
-    ReturnTD,
-    RookieYear,
-    Rush2PT,
-    RushFD,
-    RushFumbles,
-    RushFumblesLost,
-    RushTD,
-    RushYards,
-    Season,
-    Weight,
-    YearsExp
-}
-
-export enum CalculatedData {
-    Kick40,
-    Kick50,
-    Kick60,    
-    KickPATPct,
-    KickPct, 
-    KickTotal,
-    KickTotalPAT,
-    KickU40,
-    PassCompletionPercentage,
-    RecptionPercentage,    
-}
+import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
 
 export function formatPlayerData(dataPoint: PlayerData, data?: string | number | null): number | string {
     if (data === undefined || data === null)
@@ -80,6 +9,7 @@ export function formatPlayerData(dataPoint: PlayerData, data?: string | number |
     switch (dataPoint) {
         case PlayerData.Age:
         case PlayerData.GamesPlayed:
+        case PlayerData.GameStatus:
         case PlayerData.GamesStarted:
         case PlayerData.KickLong:
         case PlayerData.PassAirYards:
@@ -167,6 +97,7 @@ export function formatPlayerData(dataPoint: PlayerData, data?: string | number |
         case PlayerData.ReturnTD:
         case PlayerData.RookieYear:
         case PlayerData.Rush2PT:
+        case PlayerData.RushCarries:
         case PlayerData.RushFD:
         case PlayerData.RushFumbles:
         case PlayerData.RushFumblesLost:
@@ -277,6 +208,21 @@ export function formatCalulatedStats(stat: CalculatedData, data?: SeasonData | n
             
             return ((parseInt(completions) / parseInt(attempts)) * 100).toFixed(1);
         }
+        case CalculatedData.PointsPerGame: {
+            let points = data?.fantasy_points ?? 0;
+            let games = data?.games_played ?? 16;
+            games = (games !== 0) ? games : 16;
+            
+            return (points / games).toFixed(1);
+        }
+        case CalculatedData.PPRPointsPerGame: {
+            let games = data?.games_played ?? 16;
+            let points = data?.fantasy_points_ppr ?? 0;
+            if (games === 0)
+                games = 16;
+
+            return (points / games).toFixed(1);
+        }
         case CalculatedData.RecptionPercentage: {
             if (!data.stats.rec)
                 return UNAVAILABLE;
@@ -285,7 +231,17 @@ export function formatCalulatedStats(stat: CalculatedData, data?: SeasonData | n
             if (!receptions || !targets || targets === "0") 
               return 0;
             
-            return (parseInt(receptions) / (parseInt(targets) * 100)).toFixed(1);
+            return ((parseInt(receptions) / (parseInt(targets)) * 100)).toFixed(1);
+        }
+        case CalculatedData.RushYardsPerCarry: {
+            if (!data.stats.rush)
+                return UNAVAILABLE;
+
+            let { carries, rush_yards } = data.stats.rush
+            if (!carries || !rush_yards || carries === "0") 
+              return 0;
+            
+            return (rush_yards / parseInt(carries)).toFixed(1);
         }
         default:
             return UNAVAILABLE;

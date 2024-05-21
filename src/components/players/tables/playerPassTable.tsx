@@ -63,13 +63,22 @@ const PlayerPassTable: React.FC<PlayerProps> = ({ player }) => {
             columnGroupingModel={[
               {
                 groupId: 'sack',
-                headerName: 'Sacks',
+                headerName: 'Sack',
                 headerAlign: 'center',
                 children: [
                   { field: 'stats.pass.sack_fumbles' }, 
                   { field: 'stats.pass.sack_fumbles_lost' },
                   { field: 'stats.pass.sacks' },
                   { field: 'stats.pass.sack_yards' }
+                ],
+              },
+              {
+                groupId: 'metrics',
+                headerName: 'Metrics',
+                headerAlign: 'center',
+                children: [
+                  { field: 'stats.pass.dakota' }, 
+                  { field: 'stats.pass.pass_epa' },
                 ],
               },
           ]}

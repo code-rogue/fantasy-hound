@@ -1,9 +1,5 @@
-import { 
-    CalculatedData, 
-    formatCalulatedStats,
-    formatPlayerData, 
-    PlayerData
-} from '@components/players/utils/playerDataUtils';
+import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
+import { formatCalulatedStats, formatPlayerData } from '@components/players/utils/playerDataUtils';
 import { GridColDef } from '@mui/x-data-grid';
 import { SeasonData } from '@interfaces/models/season/season';
 
@@ -194,7 +190,7 @@ export function seasonPassSacksColumn(): GridColDef {
         field: 'stats.pass.sacks',
         filterable: false,
         headerAlign: 'center',
-        headerName: 'SCK', 
+        headerName: 'Total', 
         valueGetter: (_v, row: SeasonData) => {
           return formatPlayerData(PlayerData.PassSack, row.stats?.pass?.sacks);
         },

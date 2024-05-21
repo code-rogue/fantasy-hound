@@ -1,9 +1,5 @@
-import { 
-    formatCalulatedStats,
-    CalculatedData,
-    formatPlayerData, 
-    PlayerData
-} from '@components/players/utils/playerDataUtils';
+import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
+import { formatCalulatedStats, formatPlayerData } from '@components/players/utils/playerDataUtils';
 import { GridColDef } from '@mui/x-data-grid';
 import { SeasonData } from '@interfaces/models/season/season';
 

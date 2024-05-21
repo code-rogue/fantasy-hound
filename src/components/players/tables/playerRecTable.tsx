@@ -27,16 +27,16 @@ import {
 const PlayerRecTable: React.FC<PlayerProps> = ({ player }) => {
     const columns: GridColDef[] = [
       seasonColumn(),
-      seasonRecTargetsColumn(),
-      seasonRecTargetShareColumn(),
       seasonRecptionsColumn(),
       seasonReceptionPercentColumn(),
+      seasonRecTargetsColumn(),
+      seasonRecTargetShareColumn(),
       seasonRecYardsColumn(),
+      seasonRecTDsColumn(),
+      seasonRec2PTsColumn(),
       seasonRecYACColumn(),
       seasonRecAirYardsColumn(),
       seasonRecAirYardShareColumn(),
-      seasonRecTDsColumn(),
-      seasonRec2PTsColumn(),
       seasonRecFirstDownsColumn(),
       seasonRecFumblesColumn(),
       seasonRecFumblesLostColumn(),
@@ -62,6 +62,45 @@ const PlayerRecTable: React.FC<PlayerProps> = ({ player }) => {
             disableColumnSorting
             pageSizeOptions={[]}
             rows={player?.stats ?? []}
+            columnGroupingModel={[
+              {
+                  groupId: 'airYards',
+                  headerName: 'Air Yards',
+                  headerAlign: 'center',
+                  children: [
+                      { field: 'stats.rec.rec_air_yards' }, 
+                      { field: 'stats.rec.rec_air_yards_share' },
+                  ],
+              },
+              {
+                groupId: 'targets',
+                headerName: 'Targets',
+                headerAlign: 'center',
+                children: [
+                    { field: 'stats.rec.targets' }, 
+                    { field: 'stats.rec.target_share' },
+                ],
+              },
+              {
+                groupId: 'receptions',
+                headerName: 'Receptions',
+                headerAlign: 'center',
+                children: [
+                    { field: 'stats.rec.receptions' }, 
+                    { field: 'stats.rec' },
+                ],
+              },
+              {
+                groupId: 'metrics',
+                headerName: 'Metrics',
+                headerAlign: 'center',
+                children: [
+                    { field: 'stats.rec.rec_air_conversion_ratio' }, 
+                    { field: 'stats.rec.weighted_opportunity_rating' },
+                    { field: 'stats.rec.rec_epa' },
+                ],
+              },
+          ]}
         />
       );
 };

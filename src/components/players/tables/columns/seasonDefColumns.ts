@@ -8,7 +8,7 @@ export function seasonDefTacklesColumn(): GridColDef {
         field: 'stats.def.tackles', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'TOT', 
+        headerName: 'Total', 
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tackles; 
         },
@@ -23,7 +23,7 @@ export function seasonDefSoloTacklesColumn(): GridColDef {
         field: 'stats.def.tackles_solo', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'SOLO', 
+        headerName: 'Solo', 
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tackles_solo; 
         },
@@ -38,7 +38,7 @@ export function seasonDefAssistedTacklesColumn(): GridColDef {
         field: 'stats.def.tackle_with_assists', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'AST', 
+        headerName: 'Ast', 
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tackle_with_assists; 
         },
@@ -53,7 +53,7 @@ export function seasonDefTacklesForLostColumn(): GridColDef {
         field: 'stats.def.tackles_for_loss', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'TFL', 
+        headerName: 'Total', 
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tackles_for_loss; 
         },
@@ -113,7 +113,7 @@ export function seasonDefSacksColumn(): GridColDef {
         field: 'stats.def.sacks', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'SCK', 
+        headerName: 'Total', 
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.sacks; 
         },
@@ -139,15 +139,15 @@ export function seasonDefSackYardsColumn(): GridColDef {
 export function seasonDefQBHitsColumn(): GridColDef {
     return {
         align: 'center',
-        description: 'QB Hits', 
+        description: 'Quarterback Hits', 
         field: 'stats.def.qb_hits', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'QBHits', 
+        headerName: 'QB Hits', 
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.qb_hits; 
         },
-        width: 75,
+        width: 80,
     };
 }
 

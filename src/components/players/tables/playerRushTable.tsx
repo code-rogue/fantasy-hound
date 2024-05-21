@@ -10,6 +10,8 @@ import {
 } from '@components/players/tables/columns/seasonColumns';
 import { 
   seasonRush2PTsColumn,
+  seasonRushCarriesColumn,
+  seasonRushYPCColumn,
   seasonRushFirstDownsColumn,
   seasonRushFumblesColumn,
   seasonRushFumblesLostColumn,
@@ -21,7 +23,9 @@ import {
 const PlayerRushTable: React.FC<PlayerProps> = ({ player }) => {
     const columns: GridColDef[] = [
       seasonColumn(),
-      seasonRushYardsColumn(),      
+      seasonRushCarriesColumn(),
+      seasonRushYPCColumn(),
+      seasonRushYardsColumn(),
       seasonRushTDsColumn(),
       seasonRush2PTsColumn(),
       seasonRushFirstDownsColumn(),      
@@ -47,6 +51,18 @@ const PlayerRushTable: React.FC<PlayerProps> = ({ player }) => {
           disableColumnSorting
           pageSizeOptions={[]}         
           rows={player?.stats ?? []}
+          columnGroupingModel={[
+            {
+                groupId: 'carries',
+                headerName: 'Carries',
+                headerAlign: 'center',
+                children: [
+                    { field: 'stats.rush.carries' }, 
+                    { field: 'stats.rush.yards_per_carry' },
+                    { field: 'stats.rush.rush_yards' },
+                ],
+            },            
+        ]}
       />
     );
 };

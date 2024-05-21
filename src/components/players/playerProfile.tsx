@@ -2,12 +2,13 @@ import Avatar from '@mui/material/Avatar';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { formatPlayerData, PlayerData } from '@components/players/utils/playerDataUtils';
+import { formatPlayerData } from '@components/players/utils/playerDataUtils';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import { Player } from '@interfaces/models/player';
+import { PlayerData } from '@interfaces/enums/player_data.enums';
 import React from 'react';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
