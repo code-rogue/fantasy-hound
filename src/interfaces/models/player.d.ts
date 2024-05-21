@@ -38,3 +38,10 @@ export interface Player {
 export interface PlayerProps {
   player?: Player;
 }
+
+export interface PlayerSearchProps {
+    status: boolean;
+    statusCallback: function;
+    position: string;
+    positionCallback: function;
+  }

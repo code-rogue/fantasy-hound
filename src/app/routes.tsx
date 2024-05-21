@@ -1,7 +1,7 @@
 import AppFramework from '@app/appFramework';
 import ErrorPage from "@app/errorPage";
 import LandingPage from '@app/landingPage';
-import SearchPage from '@app/searchPage';
+import PlayerSearch from '@components/search/playerSearch';
 import PlayerPage from '@components/players/playerPage';
 import LoginPage from '@auth/loginPage';
 import { Navigate, useLocation, Outlet  } from 'react-router-dom';
@@ -15,7 +15,7 @@ export const AppRoutes = () => {
           <Route element={<PrivateRoute/>}>
               <Route path='/' element={<AppFramework />} errorElement={<ErrorPage />}>
                 <Route path='/' element={<LandingPage />} />
-                <Route path='/Search' element={<SearchPage />} />
+                <Route path='/Search' element={<PlayerSearch />} />
                 <Route path='/Player/*' element={<PlayerPage />} />
               </Route>
           </Route>
