@@ -8,12 +8,7 @@ import { Player } from '@interfaces/models/player';
 import { PlayerProps } from '@interfaces/models/player';
 import React, { useState } from 'react';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import SeasonGameLogTable from '@components/players/tables/seasonGameLogTable';
-import { 
-    isOffensivePlayer,
-    isDefensivePlayer,
-    isSpecialTeamsPlayer
-} from '@components/players/utils/playerUtils';
+import SeasonGameLogTable from '@components/players/tables/gameLogTable';
 import { CardHeader } from '@mui/material';
 import { fetchData } from '@app/api/apiService';
 
@@ -36,10 +31,6 @@ const PlayerGameLog: React.FC<PlayerProps> = ({ player }) => {
         await fetchGameLog(player?.id ?? 0, event.target.value);
     };
 
-    const offense = isOffensivePlayer(player);
-    const def = isDefensivePlayer(player);
-    const specialTeams = isSpecialTeamsPlayer(player);
-
     const fetchGameLog = async (id: number, year: string) => {
         try {
             const responseData = await fetchData(`/players/${id}/seasons/${year}`);
@@ -52,13 +43,12 @@ const PlayerGameLog: React.FC<PlayerProps> = ({ player }) => {
     return (
         <Card 
             raised={true}
-            sx={{ textAlign: 'left', width: '99%', minWidth: 400, margin: 1, padding: 0 }}
+            sx={{ width: '99%', minWidth: 400, margin: 1, padding: 0 }}
         >
             <CardHeader 
-                title="Game Log" 
-                sx={{ display: 'flex', justifyContent: 'center', paddingTop: 2}}
+                sx={{ display: '-webkit-box' }}
                 action={
-                    <FormControl fullWidth>
+                    <FormControl sx={{ marginLeft: 4 }}>
                         <InputLabel id="select-season">Season</InputLabel>
                         <Select
                             labelId="select-season"
@@ -73,7 +63,9 @@ const PlayerGameLog: React.FC<PlayerProps> = ({ player }) => {
                             })}
                         </Select>
                     </FormControl>
-                }>
+                }
+                title="Game Log"
+                >
             </CardHeader>
             <CardContent sx={{ padding: 1 }}>
                 <Box sx={{ width: '100%', typography: 'body1', padding: 0 }}>

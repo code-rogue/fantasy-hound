@@ -1,4 +1,5 @@
 import { SeasonData } from '@interfaces/models/season/season';
+import { TeamData } from '@interfaces/models/team';
 
 export interface Player {
     id: number,
@@ -24,9 +25,7 @@ export interface Player {
     position: string,
     jersey_number: string | null,
     years_of_experience: string | null,
-    team: string,
-    team_seq: string,
-    team_id: string,
+    team?: TeamData,
     rookie_year: string,
     draft_team: string,
     draft_number: string,

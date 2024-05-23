@@ -3,7 +3,7 @@ import { formatCalulatedStats, formatPlayerData } from '@components/players/util
 import { GridColDef } from '@mui/x-data-grid';
 import { SeasonData } from '@interfaces/models/season/season';
 
-export function seasonKickTotalColumn(): GridColDef {
+export function kickTotalColumn(): GridColDef {
     return {
         align: 'center', 
         description: 'Total Field Goal', 
@@ -18,7 +18,7 @@ export function seasonKickTotalColumn(): GridColDef {
     };
 }
 
-export function seasonKickMadePercentageColumn(): GridColDef {
+export function kickMadePercentageColumn(): GridColDef {
     return {
         align: 'center', 
         description: 'Field Goal Percentage', 
@@ -33,7 +33,7 @@ export function seasonKickMadePercentageColumn(): GridColDef {
     };
 }
 
-export function seasonKickTotalPATColumn(): GridColDef {
+export function kickTotalPATColumn(): GridColDef {
     return {
         align: 'center', 
         description: 'Total PATs', 
@@ -48,7 +48,7 @@ export function seasonKickTotalPATColumn(): GridColDef {
     };
 }
 
-export function seasonKickPATPercentageColumn(): GridColDef {
+export function kickPATPercentageColumn(): GridColDef {
     return {
         align: 'center', 
         description: 'PAT Percentage', 
@@ -63,7 +63,7 @@ export function seasonKickPATPercentageColumn(): GridColDef {
     };
 }
 
-export function seasonKickLongColumn(): GridColDef {
+export function kickLongColumn(): GridColDef {
     return {
         align: 'center', 
         description: 'Longest Field Goal', 
@@ -78,9 +78,7 @@ export function seasonKickLongColumn(): GridColDef {
     };
 }
 
-
-
-export function seasonKickU40Column(): GridColDef {
+export function kickU40Column(): GridColDef {
     return {
         align: 'center', 
         description: '1-39 Yards', 
@@ -95,7 +93,7 @@ export function seasonKickU40Column(): GridColDef {
     };
 }
 
-export function seasonKick40Column(): GridColDef {
+export function kick40Column(): GridColDef {
     return {
         align: 'center', 
         description: '40-49 Yard Field Goals',
@@ -110,7 +108,7 @@ export function seasonKick40Column(): GridColDef {
     };
 }
 
-export function seasonKick50Column(): GridColDef {
+export function kick50Column(): GridColDef {
     return {
         align: 'center', 
         description: '50-59 Yard Field Goals',
@@ -125,7 +123,7 @@ export function seasonKick50Column(): GridColDef {
     };
 }
 
-export function seasonKick60Column(): GridColDef {
+export function kick60Column(): GridColDef {
     return {
         align: 'center', 
         description: '60+ Yard Field Goals',

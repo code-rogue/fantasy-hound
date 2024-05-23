@@ -2,6 +2,7 @@ import { GridColDef } from '@mui/x-data-grid-premium';
 import { NFL_TEAMS, NFL_TEAM_NAMES } from '@interfaces/enums/team.enums';
 import { NFL_POSITION_GROUPS } from '@interfaces/enums/position_groups.enums';
 import { Player } from '@interfaces/models/player';
+import { UNAVAILABLE } from '@interfaces/constants/player.constants';
 
 export function playerIdColumn(): GridColDef {
     return { 
@@ -15,7 +16,7 @@ export function playerIdColumn(): GridColDef {
 export function playerTeamColumn(): GridColDef {
     return { 
         description: 'Team Name', 
-        field: 'team', 
+        field: 'team.full_name', 
         getOptionValue: (value: any) => value.code,
         getOptionLabel: (value: any) => value.name,
         headerName: 'Team', 
@@ -54,7 +55,7 @@ export function playerTeamColumn(): GridColDef {
           {id: 31, code: NFL_TEAMS.TEN, name: NFL_TEAM_NAMES.TEN },
           {id: 32, code: NFL_TEAMS.WAS, name: NFL_TEAM_NAMES.WAS },
         ],
-        valueFormatter : (_value, row) => row.team_display_name,
+        valueFormatter : (_value, row: Player) => row.team?.full_name ?? UNAVAILABLE,
         width: 300,
     }
 }

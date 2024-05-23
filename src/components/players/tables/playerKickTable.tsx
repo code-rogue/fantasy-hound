@@ -9,29 +9,29 @@ import {
     seasonPlayerIdColumn 
   } from '@components/players/tables/columns/seasonColumns';
   import { 
-    seasonKickTotalColumn,
-    seasonKickTotalPATColumn,
-    seasonKickPATPercentageColumn,
-    seasonKickMadePercentageColumn,
-    seasonKickLongColumn,
-    seasonKickU40Column,
-    seasonKick40Column,
-    seasonKick50Column,
-    seasonKick60Column
-  } from '@components/players/tables/columns/seasonKickColumns';
+    kickTotalColumn,
+    kickTotalPATColumn,
+    kickPATPercentageColumn,
+    kickMadePercentageColumn,
+    kickLongColumn,
+    kickU40Column,
+    kick40Column,
+    kick50Column,
+    kick60Column
+  } from '@components/players/tables/columns/kickColumns';
   
   const PlayerKickTable: React.FC<PlayerProps> = ({ player }) => {
       const columns: GridColDef[] = [
         seasonColumn(),
-        seasonKickTotalColumn(),
-        seasonKickMadePercentageColumn(),
-        seasonKickU40Column(),
-        seasonKick40Column(),
-        seasonKick50Column(),
-        seasonKick60Column(),
-        seasonKickLongColumn(),
-        seasonKickTotalPATColumn(),
-        seasonKickPATPercentageColumn(),
+        kickTotalColumn(),
+        kickMadePercentageColumn(),
+        kickU40Column(),
+        kick40Column(),
+        kick50Column(),
+        kick60Column(),
+        kickLongColumn(),
+        kickTotalPATColumn(),
+        kickPATPercentageColumn(),
         seasonPlayerIdColumn()
       ];
         

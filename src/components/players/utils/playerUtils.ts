@@ -18,7 +18,7 @@ export function isTightEnd(player?: Player): boolean {
 }
 
 export function isKicker(player?: Player): boolean {
-    return (player?.position_group === NFL_POSITIONS.K) ? true : false;
+    return (player?.position === NFL_POSITIONS.K) ? true : false;
 }
 
 export function isOffensivePlayer(player?: Player): boolean {

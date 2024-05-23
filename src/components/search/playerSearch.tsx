@@ -8,16 +8,15 @@ import {
   GridFilterModel,
   GridRenderCellParams 
 } from '@mui/x-data-grid';
-import Link from '@mui/material/Link';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   playerIdColumn,
-  playerPositionGroupColumn,
-  playerTeamColumn
+  playerPositionGroupColumn
 } from '@components/search/columns/playerColumns';
 import { Player } from '@interfaces/models/player';
 import PlayerSearchToolbar from '@components/search/playerSearchToolbar';
+import Chip from '@mui/material/Chip';
 
 interface PageState {
   skip: number;
@@ -120,39 +119,46 @@ const PlayerSearch: React.FC = () => {
 
   const columns: GridColDef[] = [
     { 
-      field: 'headshot_url', 
-      headerName: '', 
-      description: 'Player Headshot', 
-      width: 70, 
+      field: 'full_name', 
+      headerName: 'Player', 
+      description: 'Player Name', 
+      width: 250, 
       filterable: false,
-      renderCell: (params: GridRenderCellParams<any, string>) => {
+      renderCell: (params: GridRenderCellParams<any, {id: number, name: string, url: string}>) => {
         return (
-          <Avatar alt="Image" src={params.value} sx={{ width: 30, height: 40 }} />
+          <Chip
+            avatar={<Avatar alt={params.value?.name} src={params.value?.url}/>}
+            label={params.value?.name}
+            sx={{ background:'transparent', width:'100%', justifyContent:'left' }}
+            onClick={() => {
+              navigate(`/player/${params.id}`)
+            }}
+          />
         );
+      },
+      valueGetter: (_value, row: Player) => {
+        return {id: row.id, name: row.full_name, url: row.headshot_url};
       },
     },
     { 
-      field: 'full_name', 
-      headerName: 'Name', 
-      description: 'Player Name', 
-      width: 300, 
-      hideable: false, 
+      field: 'team.logo_url', 
+      headerName: 'Team', 
+      description: 'Team Logo', 
+      width: 250, 
       filterable: false,
-      renderCell: (params: GridRenderCellParams<any, string>) => {
+      renderCell: (params: GridRenderCellParams<any, {name: string, logo: string}>) => {
         return (
-          <Link
-            component="button"
-            variant="body2"
-            onClick={() => {
-              navigate(`/player/${params.id}`);
-            }}
-          >
-            {params.value}
-          </Link>
+          <Chip
+            avatar={<Avatar alt={params.value?.name} src={params.value?.logo}>{params.value?.name}</Avatar>}
+            label={params.value?.name}
+            sx={{ background:'transparent', width:'100%', justifyContent:'left' }}
+          />
         );
       },
+      valueGetter: (_value, row: Player) => {
+        return {name: row.team?.full_name, logo: row.team?.logo_url};
+      },
     },
-    playerTeamColumn(),
     playerPositionGroupColumn(),
     playerIdColumn()
   ];
