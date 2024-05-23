@@ -15,6 +15,7 @@ export enum PlayerData {
     KickLong,
     KickMade,
     KickMissed,
+    Opponent,
     Pass2PT,
     PassAirYards,
     PassAttempts,
@@ -59,6 +60,7 @@ export enum PlayerData {
 }
 
 export enum CalculatedData {
+    FumblesLost,
     Kick40,
     Kick50,
     Kick60,    
@@ -67,9 +69,11 @@ export enum CalculatedData {
     KickTotal,
     KickTotalPAT,
     KickU40,
+    PassAttemptAndCompletions,
     PassCompletionPercentage,
     PointsPerGame,
     PPRPointsPerGame,
     RecptionPercentage,
     RushYardsPerCarry,
+    WeekGameOppType,
 }

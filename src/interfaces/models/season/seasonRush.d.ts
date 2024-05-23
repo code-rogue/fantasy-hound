@@ -1,11 +1,11 @@
 export interface SeasonRush {
-    carries: string | null,
+    carries: number | null,
     rush_yards: number | null,
-    rush_first_downs: string | null,
+    rush_first_downs: number | null,
     rush_epa: number | null,
-    rush_tds: string | null,
-    rush_two_pt_conversions: string | null,
-    rush_fumbles: string | null,
-    rush_fumbles_lost: string | null,
-    special_teams_tds: string | null,
+    rush_tds: number | null,
+    rush_two_pt_conversions: number | null,
+    rush_fumbles: number | null,
+    rush_fumbles_lost: number | null,
+    special_teams_tds: number | null,
 }

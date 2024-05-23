@@ -18,7 +18,7 @@ interface PlayerProps {
 
 const PlayerProfile: React.FC<PlayerProps> = ({ player }) => {
   return (
-    <Card sx={{ height: 275, width: '100%', margin: 1, padding: 0 }}>
+    <Card raised={true} sx={{ height: 275, width: '100%', margin: 1, padding: 0 }}>
         <CardContent sx={{ padding: 1 }}>
           <Container
             disableGutters

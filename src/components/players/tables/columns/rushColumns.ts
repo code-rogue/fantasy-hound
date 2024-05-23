@@ -1,24 +1,23 @@
 import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
 import { formatCalulatedStats, formatPlayerData } from '@components/players/utils/playerDataUtils';
 import { GridColDef } from '@mui/x-data-grid';
-import { SeasonData } from '@interfaces/models/season/season';
 
-export function seasonRushCarriesColumn(): GridColDef {
+export function rushCarriesColumn(): GridColDef {
     return {
         align: 'center',
         description: 'Carries', 
         field: 'stats.rush.carries', 
         filterable: false,
         headerAlign: 'center',
-        headerName: 'Total', 
-        valueGetter: (_v, row: SeasonData) => {
+        headerName: 'CAR', 
+        valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.RushCarries, row.stats?.rush?.carries);
         },
         width: 60,
     };
 }
 
-export function seasonRushYPCColumn(): GridColDef {
+export function rushYardsPerCarryColumn(): GridColDef {
     return {
         align: 'center',
         description: 'Yards per Carry', 
@@ -26,14 +25,14 @@ export function seasonRushYPCColumn(): GridColDef {
         filterable: false,
         headerAlign: 'center',
         headerName: 'YPC', 
-        valueGetter: (_v, row: SeasonData) => {
+        valueGetter: (_v, row) => {
             return formatCalulatedStats(CalculatedData.RushYardsPerCarry, row);
         },
         width: 60,
     };
 }
 
-export function seasonRushYardsColumn(): GridColDef {
+export function rushYardsColumn(): GridColDef {
     return {
         align: 'center',
         description: 'Rush Yards', 
@@ -41,14 +40,14 @@ export function seasonRushYardsColumn(): GridColDef {
         filterable: false,
         headerAlign: 'center',
         headerName: 'YDS', 
-        valueGetter: (_v, row: SeasonData) => {
+        valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.RushYards, row.stats?.rush?.rush_yards);
         },
         width: 60,
     };
 }
 
-export function seasonRushFirstDownsColumn(): GridColDef {
+export function rushFirstDownsColumn(): GridColDef {
     return {
         align: 'center',
         description: 'Receptions which result in a First Down', 
@@ -56,14 +55,14 @@ export function seasonRushFirstDownsColumn(): GridColDef {
         filterable: false,
         headerAlign: 'center',
         headerName: 'FD', 
-        valueGetter: (_v, row: SeasonData) => {
+        valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RushFD, row.stats?.rush?.rush_first_downs);
         },
         width: 60,
     };
 }
 
-export function seasonRushTDsColumn(): GridColDef {
+export function rushTouchdownsColumn(): GridColDef {
     return {
         align: 'center',
         description: 'Touchdowns', 
@@ -71,14 +70,14 @@ export function seasonRushTDsColumn(): GridColDef {
         filterable: false,
         headerAlign: 'center',
         headerName: 'TD', 
-        valueGetter: (_v, row: SeasonData) => {
+        valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RushTD, row.stats?.rush?.rush_tds);
         },
         width: 60,
     };
 }
 
-export function seasonRush2PTsColumn(): GridColDef {
+export function rushTwoPointConvesionsColumn(): GridColDef {
     return {
         align: 'center',
         description: '2pt Conversions',
@@ -86,14 +85,14 @@ export function seasonRush2PTsColumn(): GridColDef {
         filterable: false,
         headerAlign: 'center',
         headerName: '2PT',
-        valueGetter: (_v, row: SeasonData) => {
+        valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.Rush2PT, row.stats?.rush?.rush_two_pt_conversions);
         },
         width: 60,
     };
 }
 
-export function seasonReturnTDsColumn(): GridColDef {
+export function returnTouchdownsColumn(): GridColDef {
     return {
         align: 'center',
         description: 'Special Teams Touchdowns', 
@@ -101,14 +100,14 @@ export function seasonReturnTDsColumn(): GridColDef {
         filterable: false,
         headerAlign: 'center',
         headerName: 'Return TD', 
-        valueGetter: (_v, row: SeasonData) => {
+        valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.ReturnTD, row.stats?.rush?.special_teams_tds);
         },
         width: 100,
     };
 }
 
-export function seasonRushFumblesColumn(): GridColDef {
+export function rushFumblesColumn(): GridColDef {
     return {
         align: 'center',
         description: 'Fumbles', 
@@ -116,14 +115,14 @@ export function seasonRushFumblesColumn(): GridColDef {
         filterable: false,
         headerAlign: 'center',
         headerName: 'FUM', 
-        valueGetter: (_v, row: SeasonData) => {
+        valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RushFumbles, row.stats?.rush?.rush_fumbles);
         },
         width: 60,
     };
 } 
 
-export function seasonRushFumblesLostColumn(): GridColDef {
+export function rushFumblesLostColumn(): GridColDef {
     return {
         align: 'center',
         description: 'Fumbles Lost', 
@@ -131,7 +130,7 @@ export function seasonRushFumblesLostColumn(): GridColDef {
         filterable: false,
         headerAlign: 'center',
         headerName: 'LST', 
-        valueGetter: (_v, row: SeasonData) => {
+        valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RushFumblesLost, row.stats?.rush?.rush_fumbles_lost);
         },
         width: 60,

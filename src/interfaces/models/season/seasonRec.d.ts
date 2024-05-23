@@ -1,6 +1,6 @@
 export interface SeasonRec {
-    targets: string | null,
-    receptions: string | null,
+    targets: number | null,
+    receptions: number | null,
     target_share: number | null,
     rec_yards: number | null,
     rec_yards_after_catch: number | null,
@@ -9,9 +9,9 @@ export interface SeasonRec {
     rec_air_conversion_ratio: number | null,
     weighted_opportunity_rating: number | null,
     rec_epa: number | null,
-    rec_tds: string | null,
-    rec_two_pt_conversions: string | null,
-    rec_first_downs: string | null,
-    rec_fumbles: string | null,
-    rec_fumbles_lost: string | null,
+    rec_tds: number | null,
+    rec_two_pt_conversions: number | null,
+    rec_first_downs: number | null,
+    rec_fumbles: number | null,
+    rec_fumbles_lost: number | null,
 }

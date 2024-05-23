@@ -8,33 +8,34 @@ import {
 } from '@components/players/tables/columns/seasonColumns';
 
 import {
-  seasonPassAttemptsColumn,
-  seasonPassCompletionsColumn,
-  seasonPassCompletionPercentColumn,
-  seasonPassYardsColumn,
   seasonPassAirYardsColumn,
   seasonPassEPAColumn,
   seasonPassDakotaColumn,
-  seasonPassTDsColumn,
-  seasonPass2PTsColumn,
-  seasonPassINTsColumn,
   seasonPassSackFumblesColumn,
   seasonPassSackFumblesLostColumn,
   seasonPassSacksColumn,
   seasonPassSackYardsColumn
 } from '@components/players/tables/columns/seasonPassColumns';
 
+import { 
+  passAttemptsAndCompletionsColumn,
+  passCompletionPercentColumn,
+  passInterceptionsColumn,
+  passTouchDownsColumn,
+  passTwoPointConversionsColumn,
+  passYardsColumn
+} from '@components/players/tables/columns/passColumns';
+
 const PlayerPassTable: React.FC<PlayerProps> = ({ player }) => {
     const columns: GridColDef[] = [
       seasonColumn(),
-      seasonPassAttemptsColumn(),
-      seasonPassCompletionsColumn(),
-      seasonPassCompletionPercentColumn(),
-      seasonPassYardsColumn(),
+      passAttemptsAndCompletionsColumn(),
+      passCompletionPercentColumn(),
+      passYardsColumn(),
       seasonPassAirYardsColumn(),
-      seasonPassTDsColumn(),
-      seasonPass2PTsColumn(),
-      seasonPassINTsColumn(),
+      passTouchDownsColumn(),
+      passTwoPointConversionsColumn(),
+      passInterceptionsColumn(),
       seasonPassSacksColumn(),
       seasonPassSackYardsColumn(),
       seasonPassSackFumblesColumn(),

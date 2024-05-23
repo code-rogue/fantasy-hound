@@ -9,29 +9,29 @@ import {
   seasonPlayerIdColumn 
 } from '@components/players/tables/columns/seasonColumns';
 import { 
-  seasonRush2PTsColumn,
-  seasonRushCarriesColumn,
-  seasonRushYPCColumn,
-  seasonRushFirstDownsColumn,
-  seasonRushFumblesColumn,
-  seasonRushFumblesLostColumn,
-  seasonReturnTDsColumn,
-  seasonRushTDsColumn,
-  seasonRushYardsColumn 
-} from '@components/players/tables/columns/seasonRushColumns';
+  rushCarriesColumn,
+  rushYardsPerCarryColumn,
+  rushFirstDownsColumn,
+  rushFumblesColumn,
+  rushFumblesLostColumn,
+  returnTouchdownsColumn,
+  rushTouchdownsColumn,
+  rushTwoPointConvesionsColumn,
+  rushYardsColumn 
+} from '@components/players/tables/columns/rushColumns';
 
 const PlayerRushTable: React.FC<PlayerProps> = ({ player }) => {
     const columns: GridColDef[] = [
       seasonColumn(),
-      seasonRushCarriesColumn(),
-      seasonRushYPCColumn(),
-      seasonRushYardsColumn(),
-      seasonRushTDsColumn(),
-      seasonRush2PTsColumn(),
-      seasonRushFirstDownsColumn(),      
-      seasonRushFumblesColumn(),
-      seasonRushFumblesLostColumn(),
-      seasonReturnTDsColumn(),      
+      rushCarriesColumn(),
+      rushYardsPerCarryColumn(),
+      rushYardsColumn(),
+      rushTouchdownsColumn(),
+      rushTwoPointConvesionsColumn(),
+      rushFirstDownsColumn(),      
+      rushFumblesColumn(),
+      rushFumblesLostColumn(),
+      returnTouchdownsColumn(),      
       seasonPlayerIdColumn()
     ];
       

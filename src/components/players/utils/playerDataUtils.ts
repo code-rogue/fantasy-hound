@@ -1,6 +1,7 @@
+import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
 import { SeasonData } from '@interfaces/models/season/season';
 import { UNAVAILABLE } from '@interfaces/constants/player.constants';
-import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
+import { WeekData } from '@interfaces/models/week/week';
 
 export function formatPlayerData(dataPoint: PlayerData, data?: string | number | null): number | string {
     if (data === undefined || data === null)
@@ -12,6 +13,7 @@ export function formatPlayerData(dataPoint: PlayerData, data?: string | number |
         case PlayerData.GameStatus:
         case PlayerData.GamesStarted:
         case PlayerData.KickLong:
+        case PlayerData.Opponent:
         case PlayerData.PassAirYards:
         case PlayerData.PassSack:
         case PlayerData.PassSackYards:
@@ -146,6 +148,14 @@ export function formatCalulatedStats(stat: CalculatedData, data?: SeasonData | n
         return UNAVAILABLE;
     
     switch (stat) {
+        case CalculatedData.FumblesLost: {
+            if (!data.stats.pass && !data.stats.rec && !data.stats.rush) 
+                return UNAVAILABLE;
+
+            const { pass, rec, rush } = data.stats
+            return (pass?.sack_fumbles_lost ?? 0) + + (rec?.rec_fumbles_lost ?? 0) + (rush?.rush_fumbles_lost ?? 0);
+
+        }
         case CalculatedData.KickPct: {
             if (!data.stats.kick) 
                 return UNAVAILABLE;
@@ -198,15 +208,22 @@ export function formatCalulatedStats(stat: CalculatedData, data?: SeasonData | n
             const { pat_made: made, pat_missed: missed, } = data.stats.kick;
             return formatKickTotals(made, missed);
         }
+        case CalculatedData.PassAttemptAndCompletions: {
+            if (!data.stats.pass)
+                return `--/--`;
+
+            const { attempts, completions } = data.stats.pass
+            return `${completions}/${attempts}`;
+        }
         case CalculatedData.PassCompletionPercentage: {
             if (!data.stats.pass)
                 return UNAVAILABLE;
 
             let { attempts, completions } = data.stats.pass
-            if (!attempts || !completions || attempts === "0") 
+            if (!attempts || !completions || attempts === 0) 
               return 0;
             
-            return ((parseInt(completions) / parseInt(attempts)) * 100).toFixed(1);
+            return ((completions / attempts) * 100).toFixed(1);
         }
         case CalculatedData.PointsPerGame: {
             let points = data?.fantasy_points ?? 0;
@@ -228,20 +245,35 @@ export function formatCalulatedStats(stat: CalculatedData, data?: SeasonData | n
                 return UNAVAILABLE;
 
             let { receptions, targets } = data.stats.rec
-            if (!receptions || !targets || targets === "0") 
+            if (!receptions || !targets || targets === 0) 
               return 0;
             
-            return ((parseInt(receptions) / (parseInt(targets)) * 100)).toFixed(1);
+            return ((receptions / (targets) * 100)).toFixed(1);
         }
         case CalculatedData.RushYardsPerCarry: {
             if (!data.stats.rush)
                 return UNAVAILABLE;
 
             let { carries, rush_yards } = data.stats.rush
-            if (!carries || !rush_yards || carries === "0") 
+            if (!carries || !rush_yards || carries === 0) 
               return 0;
             
-            return (rush_yards / parseInt(carries)).toFixed(1);
+            return (rush_yards / carries).toFixed(1);
+        }
+        default:
+            return UNAVAILABLE;
+    }
+}
+
+
+export function formatCalulatedWeekStats(stat: CalculatedData, data?: WeekData | null): number | string {
+    if (data === undefined || data === null || !data.stats)
+        return UNAVAILABLE;
+    
+    switch (stat) {
+        case CalculatedData.WeekGameOppType: {
+            const { game_type, opponent } = data
+            return `${opponent} (${game_type})`;
         }
         default:
             return UNAVAILABLE;

@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { NFL_POSITION_GROUPS } from '@interfaces/enums/position_groups.enums';
+import Container from '@mui/material/Container';
 import PlayerCareerTable from '@components/players/tables/playerCareerTable';
 import PlayerDefTable from '@components/players/tables/playerDefTable';
 import PlayerKickTable from '@components/players/tables/playerKickTable';
@@ -9,55 +9,30 @@ import PlayerPassTable from '@components/players/tables/playerPassTable';
 import PlayerRecTable from '@components/players/tables/playerRecTable';
 import PlayerRushTable from '@components/players/tables/playerRushTable';
 import { PlayerProps } from '@interfaces/models/player';
+import React from 'react';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import React from 'react';
+
+
+import { 
+    isOffensivePlayer,
+    isDefensivePlayer,
+    isSpecialTeamsPlayer
+} from '@components/players/utils/playerUtils';
+import PlayerGameLog from '@components/players/playerGameLog';
 
 const PlayerStats: React.FC<PlayerProps> = ({ player }) => {
     const [value, setValue] = React.useState('career');
 
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     };
 
-    const isOffense = (): boolean => {
-        switch (player?.position_group) {
-            case NFL_POSITION_GROUPS.QB:
-            case NFL_POSITION_GROUPS.OL:
-            case NFL_POSITION_GROUPS.RB:
-            case NFL_POSITION_GROUPS.TE:
-            case NFL_POSITION_GROUPS.WR:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    const isDefense = (): boolean => {
-        switch (player?.position_group) {
-            case NFL_POSITION_GROUPS.DB:
-            case NFL_POSITION_GROUPS.DL:
-            case NFL_POSITION_GROUPS.LB:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    const isSpecialTeams = (): boolean => {
-        switch (player?.position_group) {
-            case NFL_POSITION_GROUPS.SPEC:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    const offense = isOffense();
-    const def = isDefense();
-    const specialTeams = isSpecialTeams();
+    const offense = isOffensivePlayer(player);
+    const def = isDefensivePlayer(player);
+    const specialTeams = isSpecialTeamsPlayer(player);
 
     let defTab;
     let kickTab;
@@ -70,50 +45,52 @@ const PlayerStats: React.FC<PlayerProps> = ({ player }) => {
             recTab = <Tab label="Receiving" value="rec" />;
         rushTab = <Tab label="Rushing" value="rush" />;
     }
-    if (def) {
+    if (def)
         defTab = <Tab label="Defense" value="def" />;
-    }
-    if (specialTeams) {
+    
+    if (specialTeams)
         kickTab = <Tab label="Kicking" value="kick" />;
-    }
 
     return (
-        <Card sx={{ height: 800, width: '100%', margin: 1, padding: 0 }}>
-            <CardContent sx={{ padding: 1 }}>
-                <Box sx={{ width: '100%', typography: 'body1' }}>
-                    <TabContext value={value}>
-                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <TabList onChange={handleChange} aria-label="Season Stat Tabs">
-                            <Tab label="Overview" value="career" />
-                            {defTab}
-                            {kickTab}
-                            {passTab}
-                            {recTab}
-                            {rushTab}
-                        </TabList>
-                        </Box>
-                        <TabPanel value="career">
-                            <PlayerCareerTable player={player} />
-                        </TabPanel>
-                        <TabPanel value="def">
-                            <PlayerDefTable player={player} />
-                        </TabPanel>
-                        <TabPanel value="kick">
-                            <PlayerKickTable player={player} />
-                        </TabPanel>
-                        <TabPanel value="pass">
-                            <PlayerPassTable player={player} />
-                        </TabPanel>
-                        <TabPanel value="rec">
-                            <PlayerRecTable player={player} />
-                        </TabPanel>
-                        <TabPanel value="rush">
-                            <PlayerRushTable player={player} />
-                        </TabPanel>
-                    </TabContext>
-                </Box>
-            </CardContent>
-        </Card>
+        <Container disableGutters>
+            <Card raised={true} sx={{ minWidth: 400, margin: 1, padding: 0 }}>
+                <CardContent sx={{ padding: 1 }}>
+                    <Box sx={{ typography: 'body1', padding: 0}}>
+                        <TabContext value={value}>
+                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                            <TabList onChange={handleTabChange} aria-label="Season Stat Tabs">
+                                <Tab label="Overview" value="career" />
+                                {defTab}
+                                {kickTab}
+                                {passTab}
+                                {recTab}
+                                {rushTab}
+                            </TabList>
+                            </Box>
+                            <TabPanel value="career" sx={{ padding: 0}}>
+                                <PlayerCareerTable player={player} />
+                            </TabPanel>
+                            <TabPanel value="def" sx={{ padding: 0}}>
+                                <PlayerDefTable player={player} />
+                            </TabPanel>
+                            <TabPanel value="kick" sx={{ padding: 0}}>
+                                <PlayerKickTable player={player} />
+                            </TabPanel>
+                            <TabPanel value="pass" sx={{ padding: 0}}>
+                                <PlayerPassTable player={player} />
+                            </TabPanel>
+                            <TabPanel value="rec" sx={{ padding: 0}}>
+                                <PlayerRecTable player={player} />
+                            </TabPanel>
+                            <TabPanel value="rush" sx={{ padding: 0}}>
+                                <PlayerRushTable player={player} />
+                            </TabPanel>
+                        </TabContext>
+                    </Box>
+                </CardContent>
+            </Card>
+            <PlayerGameLog player={player} />
+        </Container>
     );
 };
 

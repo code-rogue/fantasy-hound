@@ -1,0 +1,18 @@
+export interface WeekPass {    
+    attempts?: number | null,
+    completions?: number | null,
+    dakota?: number | null,
+    interceptions?: number | null,
+    pass_air_yards?: number | null,
+    pass_air_conversion_ratio?: number | null,
+    pass_epa?: number | null,
+    pass_first_downs?: number | null,
+    pass_tds?: number | null,
+    pass_two_pt_conversions?: number | null,
+    pass_yards?: number | null,
+    pass_yards_after_catch?: number | null,
+    sack_fumbles?: number | null,
+    sack_fumbles_lost?: number | null,
+    sack_yards?: number | null,
+    sacks?: number | null,
+}
