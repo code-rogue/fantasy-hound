@@ -14,9 +14,9 @@ export const AppRoutes = () => {
         <Routes>
           <Route element={<PrivateRoute/>}>
               <Route path='/' element={<AppFramework />} errorElement={<ErrorPage />}>
-                <Route path='/' element={<LandingPage />} />
-                <Route path='/Search' element={<PlayerSearch />} />
-                <Route path='/Player/*' element={<PlayerPage />} />
+                <Route path=':' element={<LandingPage />} />
+                <Route path=':Search' element={<PlayerSearch />} />
+                <Route path=':Player/:PlayerId' element={<PlayerPage />} />
               </Route>
           </Route>
           <Route path='/login' element={<LoginPage />} errorElement={<ErrorPage />}/>

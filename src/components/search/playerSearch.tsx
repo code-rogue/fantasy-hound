@@ -9,7 +9,7 @@ import {
   GridRenderCellParams 
 } from '@mui/x-data-grid';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useSearchParams , useNavigate } from 'react-router-dom';
 import {
   playerIdColumn,
   playerPositionGroupColumn
@@ -30,11 +30,32 @@ interface Players {
 
 const initialDataState: PageState = { skip: 0, take: 25 };
 const PlayerSearch: React.FC = () => {
+  let [key, setKey] = useState('');
+  let [positionGroup, setPositionGroup] = React.useState('QB');
+  let [careerStatus, setCareerStatus] = React.useState(true);
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  key = searchParams.get('key') ?? '';
+  positionGroup = searchParams.get('positionGroup') ?? 'QB';
+  careerStatus = (searchParams.get('status') === "0") ? false : true;
+
+  const updateURLParams = () => {
+    const params = new URLSearchParams();
+    if (key && key !== '')
+      params.set('key', key);
+    
+    if (positionGroup)
+      params.set('positionGroup', positionGroup);
+    
+    params.set('status', (careerStatus) ? '1' : '0');
+    setSearchParams(params);
+  };
+
   const [filterModel] = React.useState<GridFilterModel>({
     items: [],
     logicOperator: GridLogicOperator.And,
     quickFilterLogicOperator: GridLogicOperator.And,
-    quickFilterValues: []
+    quickFilterValues: key.split(',')
   });
   const [page] = React.useState<PageState>(initialDataState);
   const [players, setPlayers] = useState<Players | null>(null);
@@ -42,12 +63,11 @@ const PlayerSearch: React.FC = () => {
     pageSize: 25,
     page: 0,
   });
-  let [positionGroup, setPositionGroup] = React.useState('QB');
-  let [careerStatus, setCareerStatus] = React.useState(true);
 
   const handleStatusChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setCareerStatus(event.target.checked);
     careerStatus = event.target.checked;
+    updateURLParams();
     await fetchDataAndSetState();
   };
 
@@ -57,6 +77,7 @@ const PlayerSearch: React.FC = () => {
   ) => {
     setPositionGroup(newPositionGroup);
     positionGroup = newPositionGroup;
+    updateURLParams();
     await fetchDataAndSetState();
   };
 
@@ -102,7 +123,8 @@ const PlayerSearch: React.FC = () => {
     filterModel.logicOperator = logicOperator;
     filterModel.quickFilterLogicOperator = quickFilterLogicOperator;
     filterModel.quickFilterValues = quickFilterValues;
-
+    key = quickFilterValues?.join(',') ?? '';
+    updateURLParams();
     await fetchDataAndSetState();
   };
 
@@ -177,6 +199,12 @@ const PlayerSearch: React.FC = () => {
                 rowCount: players?.total ?? 0,
                 paginationModel: { pageSize: 25, page: 0 }
               },
+              filter: {
+                filterModel: {
+                  items: [],
+                  quickFilterValues: key.split(',')
+                }
+              }
             }}
             autosizeOnMount={true}
             columns={columns}
