@@ -13,7 +13,6 @@ export function passAttemptsAndCompletionsColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatCalulatedStats(CalculatedData.PassAttemptAndCompletions, row);
         },
-        width: 75,
     }
 }
 
@@ -28,7 +27,6 @@ export function passCompletionPercentColumn(): GridColDef {
         valueGetter: (_v, row) => { 
           return formatCalulatedStats(CalculatedData.PassCompletionPercentage, row) 
         },
-        width: 60,
     }
 }
 
@@ -43,7 +41,6 @@ export function passYardsColumn(): GridColDef {
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.PassYards, row.stats?.pass?.pass_yards);
         },
-        width: 60,
     }
 }
 
@@ -58,7 +55,6 @@ export function passTouchDownsColumn(): GridColDef {
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.PassTD, row.stats?.pass?.pass_tds);
         },
-        width: 60,
     }
 }
 
@@ -73,7 +69,6 @@ export function passTwoPointConversionsColumn(): GridColDef {
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.Pass2PT, row.stats?.pass?.pass_two_pt_conversions);
         },
-        width: 60,
     }
 }
  
@@ -88,6 +83,5 @@ export function passInterceptionsColumn(): GridColDef {
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.PassInt, row.stats?.pass?.interceptions);
         },
-        width: 60,
     }
 }

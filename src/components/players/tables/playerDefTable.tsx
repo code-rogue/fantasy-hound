@@ -60,6 +60,7 @@ import {
                 },
                 },
             }}
+            autoHeight={true}
             autosizeOnMount={true}
             columns={columns}
             density="compact"

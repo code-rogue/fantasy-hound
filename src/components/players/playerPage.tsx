@@ -27,12 +27,14 @@ const PlayerPage: React.FC = () => {
   return (
     <Container
       disableGutters
+      maxWidth={false}
       sx={{ 
         display: 'block'
       }}
     >
       <Container
         disableGutters
+        maxWidth={false}
         sx={{ 
           display: 'flex'
         }}
@@ -43,6 +45,7 @@ const PlayerPage: React.FC = () => {
 
       <Container
         disableGutters
+        maxWidth={false}
         sx={{ 
           display: 'flex'
         }}

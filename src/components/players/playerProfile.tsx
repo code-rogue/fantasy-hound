@@ -22,6 +22,7 @@ const PlayerProfile: React.FC<PlayerProps> = ({ player }) => {
         <CardContent sx={{ padding: 1 }}>
           <Container
             disableGutters
+            maxWidth={false}
             sx={{ 
               display: 'flex',
             }}

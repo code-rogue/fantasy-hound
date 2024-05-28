@@ -16,6 +16,7 @@ const SeasonGameLogTable: React.FC<PlayerProps> = ({ player }) => {
                     },
                 },
             }}
+            autoHeight={true}
             autosizeOnMount={true}
             columns={columns}
             density="compact"

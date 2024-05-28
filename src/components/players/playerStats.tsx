@@ -52,20 +52,20 @@ const PlayerStats: React.FC<PlayerProps> = ({ player }) => {
         kickTab = <Tab label="Kicking" value="kick" />;
 
     return (
-        <Container disableGutters>
-            <Card raised={true} sx={{ minWidth: 400, margin: 1, padding: 0 }}>
+        <Container disableGutters maxWidth={false}>
+            <Card raised={true} sx={{ margin: 1, padding: 0 }}>
                 <CardContent sx={{ padding: 1 }}>
-                    <Box sx={{ typography: 'body1', padding: 0}}>
+                    <Container disableGutters maxWidth={false}>
                         <TabContext value={value}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                            <TabList onChange={handleTabChange} aria-label="Season Stat Tabs">
-                                <Tab label="Overview" value="career" />
-                                {defTab}
-                                {kickTab}
-                                {passTab}
-                                {recTab}
-                                {rushTab}
-                            </TabList>
+                                <TabList onChange={handleTabChange} aria-label="Season Stat Tabs">
+                                    <Tab label="Overview" value="career" />
+                                    {defTab}
+                                    {kickTab}
+                                    {passTab}
+                                    {recTab}
+                                    {rushTab}
+                                </TabList>
                             </Box>
                             <TabPanel value="career" sx={{ padding: 0}}>
                                 <PlayerCareerTable player={player} />
@@ -86,7 +86,7 @@ const PlayerStats: React.FC<PlayerProps> = ({ player }) => {
                                 <PlayerRushTable player={player} />
                             </TabPanel>
                         </TabContext>
-                    </Box>
+                    </Container>
                 </CardContent>
             </Card>
             <PlayerGameLog player={player} />

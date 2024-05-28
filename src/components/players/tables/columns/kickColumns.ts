@@ -14,7 +14,6 @@ export function kickTotalColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatCalulatedStats(CalculatedData.KickTotal, row);
         },
-        width: 75,
     };
 }
 
@@ -29,7 +28,6 @@ export function kickMadePercentageColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatCalulatedStats(CalculatedData.KickPct, row);
         },
-        width: 60,
     };
 }
 
@@ -44,7 +42,6 @@ export function kickTotalPATColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatCalulatedStats(CalculatedData.KickTotalPAT, row);
         },
-        width: 75,
     };
 }
 
@@ -59,7 +56,6 @@ export function kickPATPercentageColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatCalulatedStats(CalculatedData.KickPATPct, row);
         },
-        width: 75,
     };
 }
 
@@ -74,7 +70,6 @@ export function kickLongColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatPlayerData(PlayerData.KickLong, row.stats?.kick?.fg_long);
         },
-        width: 75,
     };
 }
 
@@ -89,7 +84,6 @@ export function kickU40Column(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatCalulatedStats(CalculatedData.KickU40, row);
         },
-        width: 75,
     };
 }
 
@@ -104,7 +98,6 @@ export function kick40Column(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatCalulatedStats(CalculatedData.Kick40, row);
         },
-        width: 75,
     };
 }
 
@@ -119,7 +112,6 @@ export function kick50Column(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatCalulatedStats(CalculatedData.Kick50, row);
         },
-        width: 75,
     };
 }
 
@@ -134,6 +126,5 @@ export function kick60Column(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatCalulatedStats(CalculatedData.Kick60, row);
         },
-        width: 75,
     };
 }

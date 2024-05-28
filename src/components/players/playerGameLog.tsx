@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import FormControl from '@mui/material/FormControl';
@@ -43,7 +43,7 @@ const PlayerGameLog: React.FC<PlayerProps> = ({ player }) => {
     return (
         <Card 
             raised={true}
-            sx={{ width: '99%', minWidth: 400, margin: 1, padding: 0 }}
+            sx={{ margin: 1, padding: 0 }}
         >
             <CardHeader 
                 sx={{ display: '-webkit-box' }}
@@ -68,9 +68,9 @@ const PlayerGameLog: React.FC<PlayerProps> = ({ player }) => {
                 >
             </CardHeader>
             <CardContent sx={{ padding: 1 }}>
-                <Box sx={{ width: '100%', typography: 'body1', padding: 0 }}>
+                <Container disableGutters maxWidth={false}>
                     <SeasonGameLogTable player={gameLog} />                 
-                </Box>
+                </Container>
             </CardContent>
         </Card>
     );

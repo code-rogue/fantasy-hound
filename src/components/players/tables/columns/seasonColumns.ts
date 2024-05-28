@@ -11,7 +11,6 @@ export function seasonColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'Season', 
         hideable: false,
-        width: 80,
       };
 }
 
@@ -35,7 +34,6 @@ export function seasonAgeColumn(): GridColDef {
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.Age, row.age);
         },
-        width: 60,
     }
 }
 export function seasonGamesPlayedColumn(): GridColDef {
@@ -49,7 +47,6 @@ export function seasonGamesPlayedColumn(): GridColDef {
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.GamesPlayed, row.games_played);
         },
-        width: 90,
     }
 }
 
@@ -64,7 +61,6 @@ export function seasonNonPPRPointsColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.PPRPoints, row.fantasy_points);
         },
-        width: 80,
     }
 }
 
@@ -79,7 +75,6 @@ export function seasonNonPPRPointsPerGameColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatCalulatedStats(CalculatedData.PointsPerGame, row);
         },
-        width: 60,
     }
 }
 
@@ -94,7 +89,6 @@ export function seasonPPRPointsColumn(): GridColDef {
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.PPRPoints, row.fantasy_points_ppr);
         },
-        width: 80,
     }
 }
 
@@ -109,6 +103,5 @@ export function seasonPPRPointsPerGameColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatCalulatedStats(CalculatedData.PPRPointsPerGame, row);
         },
-        width: 60,
     }
 }

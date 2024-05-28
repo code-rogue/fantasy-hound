@@ -12,7 +12,6 @@ export function seasonDefTacklesColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tackles; 
         },
-        width: 60,
     };
 }
 
@@ -27,7 +26,6 @@ export function seasonDefSoloTacklesColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tackles_solo; 
         },
-        width: 65,
     };
 }
 
@@ -42,7 +40,6 @@ export function seasonDefAssistedTacklesColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tackle_with_assists; 
         },
-        width: 60,
     };
 }
 
@@ -57,7 +54,6 @@ export function seasonDefTacklesForLostColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tackles_for_loss; 
         },
-        width: 60,
     };
 }
 
@@ -72,7 +68,6 @@ export function seasonDefTackleYardsLostColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tackles_for_loss_yards; 
         },
-        width: 60,
     };
 }
 
@@ -87,7 +82,6 @@ export function seasonDefFumblesForcedColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.fumbles_forced; 
         },
-        width: 50,
     };
 }
 
@@ -102,7 +96,6 @@ export function seasonDefFumblesRecoveredColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.fumble_recovery_opp; 
         },
-        width: 60,
     };
 }
 
@@ -117,7 +110,6 @@ export function seasonDefSacksColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.sacks; 
         },
-        width: 60,
     };
 }
 
@@ -132,7 +124,6 @@ export function seasonDefSackYardsColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return `${row.stats?.def?.sack_yards}`; 
         },
-        width: 80,
     };
 }
 
@@ -147,7 +138,6 @@ export function seasonDefQBHitsColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.qb_hits; 
         },
-        width: 80,
     };
 }
 
@@ -162,7 +152,6 @@ export function seasonDefIntsColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.interceptions; 
         },
-        width: 65,
     };
 }
 
@@ -177,7 +166,6 @@ export function seasonDefIntYardsColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.interception_yards; 
         },
-        width: 65,
     };
 }
 
@@ -192,7 +180,6 @@ export function seasonDefPassDefendedColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.pass_defended; 
         },
-        width: 60,
     };
 }
 
@@ -207,7 +194,6 @@ export function seasonDefTDsColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.tds; 
         },
-        width: 50,
     };
 }
 
@@ -222,7 +208,6 @@ export function seasonDefSafteyColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.safety; 
         },
-        width: 60,
     };
 }
 
@@ -237,7 +222,6 @@ export function seasonDefPenaltyColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.penalty; 
         },
-        width: 60,
     };
 }
 
@@ -252,6 +236,5 @@ export function seasonDefPenaltyYardsColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => { 
             return row.stats?.def?.penalty_yards; 
         },
-        width: 60,
     };
 }

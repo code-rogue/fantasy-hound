@@ -1,12 +1,10 @@
 import { CalculatedData, PlayerData } from '@interfaces/enums/player_data.enums';
 import { 
     formatCalulatedWeekStats, 
-    formatCalulatedStats, 
     formatPlayerData 
 } from '@components/players/utils/playerDataUtils';
 import { GridColDef } from '@mui/x-data-grid';
 import { WeekData } from '@interfaces/models/week/week';
-import { SeasonData } from '@interfaces/models/season/season';
 
 export function weekColumn(): GridColDef {
     return {
@@ -17,7 +15,6 @@ export function weekColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'Week', 
         hideable: false,
-        width: 80,
       };
 }
 
@@ -41,7 +38,6 @@ export function weekOpponentColumn(): GridColDef {
         valueGetter: (_v, row: WeekData) => {
           return formatCalulatedWeekStats(CalculatedData.WeekGameOppType, row);
         },
-        width: 120,
     }
 }
 
@@ -59,7 +55,6 @@ export function weekFanastyPointsColumn(ppr = true): GridColDef {
 
           return formatPlayerData(PlayerData.Points, row.fantasy_points);
         },
-        width: 75,
     }
 }
 

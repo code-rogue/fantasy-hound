@@ -14,7 +14,6 @@ export function seasonPassAirYardsColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.PassAirYards, row.stats?.pass?.pass_air_yards);
         },
-        width: 60,
     }
 }
 
@@ -29,7 +28,6 @@ export function seasonPassEPAColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.PassEPA, row.stats?.pass?.pass_epa);
         },
-        width: 75,
     }
 }
 
@@ -44,7 +42,6 @@ export function seasonPassDakotaColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.Dakota, row.stats?.pass?.dakota);
         },
-        width: 95,
     }
 }
 
@@ -59,7 +56,6 @@ export function seasonPassSackFumblesColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatPlayerData(PlayerData.PassSackFumbles, row.stats?.pass?.sack_fumbles);
         },
-        width: 60,
     }
 }
 
@@ -74,7 +70,6 @@ export function seasonPassSackFumblesLostColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatPlayerData(PlayerData.PassSackFumblesLost, row.stats?.pass?.sack_fumbles_lost);
         },
-        width: 60,
     }
 }
 
@@ -89,7 +84,6 @@ export function seasonPassSacksColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatPlayerData(PlayerData.PassSack, row.stats?.pass?.sacks);
         },
-        width: 60,
     }
 }
 
@@ -104,6 +98,5 @@ export function seasonPassSackYardsColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
           return formatPlayerData(PlayerData.PassSackYards, row.stats?.pass?.sack_yards);
         },
-        width: 60,
     }
 }

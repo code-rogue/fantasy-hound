@@ -13,7 +13,6 @@ export function rushCarriesColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.RushCarries, row.stats?.rush?.carries);
         },
-        width: 60,
     };
 }
 
@@ -28,7 +27,6 @@ export function rushYardsPerCarryColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatCalulatedStats(CalculatedData.RushYardsPerCarry, row);
         },
-        width: 60,
     };
 }
 
@@ -43,7 +41,6 @@ export function rushYardsColumn(): GridColDef {
         valueGetter: (_v, row) => {
           return formatPlayerData(PlayerData.RushYards, row.stats?.rush?.rush_yards);
         },
-        width: 60,
     };
 }
 
@@ -58,7 +55,6 @@ export function rushFirstDownsColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RushFD, row.stats?.rush?.rush_first_downs);
         },
-        width: 60,
     };
 }
 
@@ -73,7 +69,6 @@ export function rushTouchdownsColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RushTD, row.stats?.rush?.rush_tds);
         },
-        width: 60,
     };
 }
 
@@ -88,7 +83,6 @@ export function rushTwoPointConvesionsColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.Rush2PT, row.stats?.rush?.rush_two_pt_conversions);
         },
-        width: 60,
     };
 }
 
@@ -103,7 +97,6 @@ export function returnTouchdownsColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.ReturnTD, row.stats?.rush?.special_teams_tds);
         },
-        width: 100,
     };
 }
 
@@ -118,7 +111,6 @@ export function rushFumblesColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RushFumbles, row.stats?.rush?.rush_fumbles);
         },
-        width: 60,
     };
 } 
 
@@ -133,6 +125,5 @@ export function rushFumblesLostColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RushFumblesLost, row.stats?.rush?.rush_fumbles_lost);
         },
-        width: 60,
     };
 }

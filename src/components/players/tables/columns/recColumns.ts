@@ -13,7 +13,6 @@ export function recTargetsColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.RecTargets, row.stats?.rec?.targets);
         },
-        width: 65,
     }
 }
 
@@ -28,7 +27,6 @@ export function recTargetShareColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.RecTargetShare, row.stats?.rec?.target_share);
         },
-        width: 70,
     }
 }
 
@@ -43,7 +41,6 @@ export function receptionsColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.Receptions, row.stats?.rec?.receptions);
         },
-        width: 60,
     }
 }
 
@@ -58,7 +55,6 @@ export function receptionPercentColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatCalulatedStats(CalculatedData.RecptionPercentage, row);
         },
-        width: 70,
     }
 }
 
@@ -73,7 +69,6 @@ export function recYardsColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RecYards, row.stats?.rec?.rec_yards);
         },
-        width: 60,
     }
 }
 
@@ -88,7 +83,6 @@ export function recYACColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RecYAC, row.stats?.rec?.rec_yards_after_catch);
         },
-        width: 60,
     }
 }
 
@@ -101,9 +95,8 @@ export function recAirYardsColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'AY', 
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.RecAirYards, row.stats?.rec?.rec_air_yards);
-    },
-    width: 60,
+            return formatPlayerData(PlayerData.RecAirYards, row.stats?.rec?.rec_air_yards);
+        },
     }
 }
           
@@ -118,7 +111,6 @@ export function recAirYardShareColumn(): GridColDef {
         valueGetter: (_v, row) => {
         return formatPlayerData(PlayerData.RecAirYardsShare, row.stats?.rec?.rec_air_yards_share);
         },
-        width: 60,
     }
 }
 
@@ -133,7 +125,6 @@ export function recTouchdownsColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.RecTD, row.stats?.rec?.rec_tds);
         },
-        width: 60,
     }
 }
             
@@ -148,7 +139,6 @@ export function recTwoPointConversionsColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.Rec2PT, row.stats?.rec?.rec_two_pt_conversions);
         },
-        width: 60,
     }
 }
 
@@ -163,7 +153,6 @@ export function recFirstDownsColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.RecFD, row.stats?.rec?.rec_first_downs);
         },
-        width: 60,
     }
 }
             
@@ -178,7 +167,6 @@ export function recFumblesColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.RecFumbles, row.stats?.rec?.rec_fumbles);
         },
-        width: 60,
     }
 }
 
@@ -193,6 +181,5 @@ export function recFumblesLostColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.RecFumblesLost, row.stats?.rec?.rec_fumbles_lost);
         },
-        width: 60,
     }
 }
