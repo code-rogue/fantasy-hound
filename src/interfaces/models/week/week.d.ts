@@ -21,7 +21,7 @@ export interface WeekData {
     opponent: string;
     fantasy_points: number;
     fantasy_points_ppr: number;
-    advanced?: {
+    advanced: {
         def?: WeekAdvDef,
         pass?: WeekAdvPass,
         rec?: WeekAdvRec,
@@ -32,7 +32,7 @@ export interface WeekData {
         rec?: WeekNextGenRec,
         rush?: WeekNextGenRush,
     };
-    stats?: {
+    stats: {
         def?: WeekDef,
         kick?: WeekKick,
         pass?: WeekPass,

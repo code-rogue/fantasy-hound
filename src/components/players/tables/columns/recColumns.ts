@@ -39,7 +39,7 @@ export function receptionsColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'REC',
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.Receptions, row.stats?.rec?.receptions);
+            return formatPlayerData(PlayerData.Receptions, row.stats?.rec?.receptions);
         },
     }
 }
@@ -53,7 +53,7 @@ export function receptionPercentColumn(): GridColDef {
         headerAlign: 'center',
         headerName: '%', 
         valueGetter: (_v, row) => {
-        return formatCalulatedStats(CalculatedData.RecptionPercentage, row);
+            return formatCalulatedStats(CalculatedData.RecptionPercentage, row);
         },
     }
 }
@@ -67,7 +67,7 @@ export function recYardsColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'YDS', 
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.RecYards, row.stats?.rec?.rec_yards);
+            return formatPlayerData(PlayerData.RecYards, row.stats?.rec?.rec_yards);
         },
     }
 }
@@ -81,7 +81,7 @@ export function recYACColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'YAC', 
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.RecYAC, row.stats?.rec?.rec_yards_after_catch);
+            return formatPlayerData(PlayerData.RecYAC, row.stats?.rec?.rec_yards_after_catch);
         },
     }
 }
@@ -109,7 +109,7 @@ export function recAirYardShareColumn(): GridColDef {
         headerAlign: 'center',
         headerName: '%', 
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.RecAirYardsShare, row.stats?.rec?.rec_air_yards_share);
+            return formatPlayerData(PlayerData.RecAirYardsShare, row.stats?.rec?.rec_air_yards_share);
         },
     }
 }

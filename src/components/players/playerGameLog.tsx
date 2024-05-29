@@ -9,7 +9,6 @@ import { PlayerProps } from '@interfaces/models/player';
 import React, { useState } from 'react';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import SeasonGameLogTable from '@components/players/tables/gameLogTable';
-import { CardHeader } from '@mui/material';
 import { fetchData } from '@app/api/apiService';
 
 const PlayerGameLog: React.FC<PlayerProps> = ({ player }) => {
@@ -41,14 +40,10 @@ const PlayerGameLog: React.FC<PlayerProps> = ({ player }) => {
     };
 
     return (
-        <Card 
-            raised={true}
-            sx={{ margin: 1, padding: 0 }}
-        >
-            <CardHeader 
-                sx={{ display: '-webkit-box' }}
-                action={
-                    <FormControl sx={{ marginLeft: 4 }}>
+        <Card raised={true} sx={{ margin: 1, padding: 0 }}>
+            <CardContent sx={{ padding: 1 }}>
+                <Container disableGutters maxWidth={false}>
+                    <FormControl sx={{ marginLeft: 0, display:'-webkit-box' }}>
                         <InputLabel id="select-season">Season</InputLabel>
                         <Select
                             labelId="select-season"
@@ -63,13 +58,7 @@ const PlayerGameLog: React.FC<PlayerProps> = ({ player }) => {
                             })}
                         </Select>
                     </FormControl>
-                }
-                title="Game Log"
-                >
-            </CardHeader>
-            <CardContent sx={{ padding: 1 }}>
-                <Container disableGutters maxWidth={false}>
-                    <SeasonGameLogTable player={gameLog} />                 
+                    <SeasonGameLogTable player={gameLog} />
                 </Container>
             </CardContent>
         </Card>

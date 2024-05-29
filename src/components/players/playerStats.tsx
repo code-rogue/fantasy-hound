@@ -2,9 +2,15 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
+import { 
+    isOffensivePlayer,
+    isDefensivePlayer,
+    isSpecialTeamsPlayer
+} from '@components/players/utils/playerUtils';
 import PlayerCareerTable from '@components/players/tables/playerCareerTable';
 import PlayerDefTable from '@components/players/tables/playerDefTable';
 import PlayerKickTable from '@components/players/tables/playerKickTable';
+import PlayerLog from '@components/players/playerLog';
 import PlayerPassTable from '@components/players/tables/playerPassTable';
 import PlayerRecTable from '@components/players/tables/playerRecTable';
 import PlayerRushTable from '@components/players/tables/playerRushTable';
@@ -15,21 +21,13 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
-
-import { 
-    isOffensivePlayer,
-    isDefensivePlayer,
-    isSpecialTeamsPlayer
-} from '@components/players/utils/playerUtils';
-import PlayerGameLog from '@components/players/playerGameLog';
-
 const PlayerStats: React.FC<PlayerProps> = ({ player }) => {
     const [value, setValue] = React.useState('career');
-
+    
     const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     };
-
+    
     const offense = isOffensivePlayer(player);
     const def = isDefensivePlayer(player);
     const specialTeams = isSpecialTeamsPlayer(player);
@@ -89,7 +87,11 @@ const PlayerStats: React.FC<PlayerProps> = ({ player }) => {
                     </Container>
                 </CardContent>
             </Card>
-            <PlayerGameLog player={player} />
+            <Card raised={true} sx={{ margin: 1, padding: 0 }}>
+                <CardContent sx={{ padding: 1 }}>
+                    <PlayerLog player={player} />
+                </CardContent>
+            </Card>
         </Container>
     );
 };

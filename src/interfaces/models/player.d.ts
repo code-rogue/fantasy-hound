@@ -38,6 +38,11 @@ export interface PlayerProps {
   player?: Player;
 }
 
+export interface PlayerLogProps extends PlayerProps {
+  display: string
+}
+
+
 export interface PlayerSearchProps {
     status: boolean;
     statusCallback: function;

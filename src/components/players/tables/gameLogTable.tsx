@@ -24,7 +24,6 @@ const SeasonGameLogTable: React.FC<PlayerProps> = ({ player }) => {
             disableColumnSorting            
             pageSizeOptions={[]}
             rows={weeks}
-            sx={{ minHeight: 125}}
         />
       );
 };

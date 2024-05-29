@@ -38,6 +38,7 @@ export function weekOpponentColumn(): GridColDef {
         valueGetter: (_v, row: WeekData) => {
           return formatCalulatedWeekStats(CalculatedData.WeekGameOppType, row);
         },
+        width: 110,
     }
 }
 
