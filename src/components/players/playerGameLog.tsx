@@ -49,7 +49,6 @@ const PlayerGameLog: React.FC<PlayerProps> = ({ player }) => {
                             labelId="select-season"
                             id="season-select"
                             value={season}
-                            label="Season"
                             onChange={handleSeasonChange}
                         >
                             <MenuItem value="0">Select a Season</MenuItem>

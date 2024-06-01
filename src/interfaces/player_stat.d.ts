@@ -4,6 +4,7 @@ export interface StatDefinition {
 }
 
 export interface PlayerStatDefinition {
-    statType: string, 
-    statName: string,
+    category: string,
+    name: string,
+    type: string,
 }

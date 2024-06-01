@@ -37,16 +37,6 @@ const PlayerLog: React.FC<PlayerProps> = ({ player }) => {
     return (
         <Container disableGutters maxWidth={false}>
             <FormControl sx={{ display:'-webkit-box' }}>
-                <InputLabel 
-                    id="select-season" 
-                    sx={{ 
-                        marginLeft: -1, 
-                        paddingLeft: 1, 
-                        paddingTop: 1, 
-                        paddingRight: 1, 
-                        //backgroud: 'white',
-                    }}
-                >Season</InputLabel>
                 <Select
                     labelId="select-season"
                     id="season-select"
