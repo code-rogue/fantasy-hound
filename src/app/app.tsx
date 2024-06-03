@@ -1,24 +1,11 @@
 import { AppRoutes } from '@app/routes';
 import { BrowserRouter as Router} from 'react-router-dom'
-import { 
-  ChakraBaseProvider,
-  extendBaseTheme,
-  theme as chakraTheme,
- } from '@chakra-ui/react'
  import { createTheme, ThemeProvider } from '@mui/material/styles';
  import { login } from '@redux/actions';
 import {  useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import '@css/app.css';
-
-const { Button } = chakraTheme.components
-
-const theme = extendBaseTheme({
-  components: {
-    Button,
-  },
-})
 
 const muiTheme = createTheme({
   palette: {
@@ -38,13 +25,11 @@ function App() {
   }, [dispatch]);
 
   return (
-    <ChakraBaseProvider theme={theme}>
-      <ThemeProvider theme={muiTheme}>
-        <Router>
-          <AppRoutes />
-        </Router>
-      </ThemeProvider>
-    </ChakraBaseProvider>
+    <ThemeProvider theme={muiTheme}>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </ThemeProvider>
   );
 }
 
