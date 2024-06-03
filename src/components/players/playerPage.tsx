@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 import PlayerAvatar from '@components/players/playerAvatar';
 import PlayerProfile from '@components/players/playerProfile';
-import PlayerStats from '@components/players/playerStats';
+import PlayerStats from '@components/players/stats/playerStats';
 
 const PlayerPage: React.FC = () => {
   const [player, setPlayer] = useState<Player>();

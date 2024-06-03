@@ -1,20 +1,19 @@
 import Container from '@mui/material/Container';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import { PlayerProps } from '@interfaces/models/player';
-import React from 'react';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-
-import { StatDefinition } from "@interfaces/player_stat";
-import { PlayerStats, PlayerStatsTypes } from '@interfaces/enums/player_stat.enums';
 import { 
     getPlayerStat, 
     statDefinitionsByType, 
     statTooltipFormatter    
 } from '@components/players/utils/playerStatUtils';
-import { LineChart } from '@mui/x-charts/LineChart';
+import MenuItem from '@mui/material/MenuItem';
 import { NFL_POSITION_GROUPS } from '@interfaces/enums/position_groups.enums';
+import { PlayerProps } from '@interfaces/models/player';
+import { PlayerStats, PlayerStatsTypes } from '@interfaces/enums/player_stat.enums';
+import PlayerStatBoomBust from '@components/players/stats/playerStatBoomBust';
+import PlayerStatLineChart from '@components/players/stats/playerStatLineChart';
+import React from 'react';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { StatData } from '@components/players/stats/playerStatBoomBust';
+import { StatDefinition } from "@interfaces/player_stat";
 
 const PlayerStatLog: React.FC<PlayerProps> = ({ player }) => {    
     let [stat, SetStat] = React.useState<PlayerStats | null>(null);
@@ -28,13 +27,20 @@ const PlayerStatLog: React.FC<PlayerProps> = ({ player }) => {
         return PlayerStatsTypes.Receiving;
     });
     let [statDefinitions, SetStatDefinitions] = React.useState<StatDefinition[]>(statDefinitionsByType(statType));
+    
+    let statData: StatData = {
+        games: 0,
+        statAvg: 0,
+        statMax: 0,
+        statMin: 0,
+        boomGames: 0,
+        bustGames: 0,
+    }
 
     const handleStatChange = async (event: SelectChangeEvent) => {
         const { value: selectedStat} = event.target
         SetStat(selectedStat === '-1' ? null : parseInt(selectedStat));
-
-        // Process data
-        statData = getPlayerStat(player?.stats[0]?.weeks, stat);
+        playerStatData = getPlayerStat(player?.stats[0]?.weeks, stat);
     };
 
     const handleStatTypeChange = async (event: SelectChangeEvent) => {
@@ -47,15 +53,29 @@ const PlayerStatLog: React.FC<PlayerProps> = ({ player }) => {
     const updateSeriesMetaData = (data: (number | null)[]) => {
         const valueArr = data.filter(x => x !== null) as number[];
         
-        total = 0;
-        minValue = Math.min(...valueArr);
-        maxValue = Math.max(...valueArr);
+        statData.games = valueArr.length;
+        statData.statMin = Math.min(...valueArr);
+        statData.statMax = Math.max(...valueArr);
         
+        let total = 0;
         valueArr.forEach(item => total += item);
-        avgValue = total / valueArr.length
-    
-        statData.forEach(_item => {
+        
+        let avgValue = total / valueArr.length
+        const boom = avgValue + (Math.abs(avgValue) * .05);
+        const bust = avgValue - (Math.abs(avgValue) * .05);
+
+        statData.statAvg = avgValue;
+        statData.boomGames = 0;
+        statData.bustGames = 0;
+
+        playerStatData.forEach(item => {
             avgLine.push(avgValue);
+            if(item !== null) {
+                if( item >= boom)
+                    statData.boomGames++;
+                if(item <= bust)
+                    statData.bustGames++;
+            }
         })
     }
 
@@ -64,18 +84,14 @@ const PlayerStatLog: React.FC<PlayerProps> = ({ player }) => {
         return week?.week ?? count++
     }) ?? []
 
-    let statData = getPlayerStat(player?.stats[0]?.weeks, stat);
+    let playerStatData = getPlayerStat(player?.stats[0]?.weeks, stat);
     let avgLine: number[] = []
-    let avgValue = 0;
-    let minValue = 0;
-    let maxValue = 1;
-    let total = 0;
-    updateSeriesMetaData(statData);
+    updateSeriesMetaData(playerStatData);
 
-    const valueSeriesFormatter = (value: number | null) => statTooltipFormatter(stat, value, avgValue);
+    const valueSeriesFormatter = (value: number | null) => statTooltipFormatter(stat, value, statData.statAvg);
     const xAxisSeriesFormatter = (value: number | null) => `Week\n${value}`;
-    const avgSeriesFormatter = (value: number | null) => `Avg: ${avgValue.toFixed(2)}`;
-
+    const avgSeriesFormatter = (value: number | null) => `Avg: ${statData.statAvg.toFixed(2)}`;
+    
     return (
         <Container disableGutters maxWidth={false} sx={{ margin: 0 }}>
             <Container 
@@ -91,7 +107,6 @@ const PlayerStatLog: React.FC<PlayerProps> = ({ player }) => {
                     labelId="select-position"
                     id="position-select"
                     value={statType.toString()}
-                    label='Type'
                     onChange={handleStatTypeChange}
                     sx={{ marginTop: 1, marginRight: 1, zIndex: 1 }}
                 >
@@ -103,7 +118,6 @@ const PlayerStatLog: React.FC<PlayerProps> = ({ player }) => {
                     labelId="select-stat"
                     id="stat-select"
                     value={(stat === null) ? '-1' : stat.toString()}
-                    label="Stats"
                     onChange={handleStatChange}
                     sx={{ marginTop: 1, zIndex: 1 }}
                 >
@@ -113,43 +127,18 @@ const PlayerStatLog: React.FC<PlayerProps> = ({ player }) => {
                     })}
                 </Select>
             </Container>
-            <Container disableGutters maxWidth={false} sx={{ height: 400, marginTop: -3 }}>
-                <LineChart
-                    xAxis={[
-                        { 
-                            data: xAxisLabels,
-                            scaleType: 'band',
-                            dataKey: 'week',
-                            valueFormatter: xAxisSeriesFormatter
-                        }
-                    ]}
-                    series={[
-                        {
-                            color: '#2ECC71',
-                            curve: 'natural',
-                            data: statData,
-                            valueFormatter: valueSeriesFormatter,
-                        },
-                        {
-                            color: '#026119',
-                            data: avgLine,
-                            disableHighlight: true,
-                            showMark: false,
-                            valueFormatter: avgSeriesFormatter
-                        }
-                    ]}
-                    yAxis={[
-                        {
-                            min: (minValue < 0) ? minValue : 0,
-                            max: maxValue
-                        }
-                    ]}
-                    grid={{ vertical: false, horizontal: true }}
-                    slotProps={{
-                        // Custom loading message
-                        loadingOverlay: { message: 'Loading data...' },
-                    }}
-                />
+            
+            <Container disableGutters maxWidth={false} sx={{ display: 'flex', height: 400, marginTop: -3 }}>
+                <PlayerStatBoomBust data={statData}/>
+                <PlayerStatLineChart data={{
+                    xAxisLabels,
+                    seriesData: playerStatData,
+                    avgerageLineData: avgLine,
+                    valueSeriesFormatter,
+                    xAxisSeriesFormatter,
+                    avgSeriesFormatter,
+                    statData: statData,
+                }}/>
             </Container>
         </Container>
     );
