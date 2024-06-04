@@ -5,8 +5,6 @@ import { BrowserRouter as Router} from 'react-router-dom'
 import {  useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-import '@css/app.css';
-
 const muiTheme = createTheme({
   palette: {
     mode: 'light',

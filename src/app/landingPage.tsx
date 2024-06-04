@@ -1,22 +1,17 @@
-import '@css/app.css';
-import logo from '@src/logo.svg';
+import { Avatar } from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 function LandingPage() {
   return (
-    <div>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-            Edit <code>src/Landing Page.tsx</code> and save to reload.
-        </p>
-        <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Learn React
-        </a>
-    </div>
+    <Container disableGutters sx={{height: 300}}>
+      <Box sx={{ height: "25%"}}></Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
+        <Avatar src='/logo.svg' sx={{ marginRight: 1}}/>
+        <Typography variant="h6" noWrap component="div">Future Fantasy Dasboard</Typography>
+      </Box>
+    </Container>
   );
 }
 

@@ -101,7 +101,8 @@ const PlayerStatLog: React.FC<PlayerProps> = ({ player }) => {
                 maxWidth={false} 
                 sx={{
                     height: 80,
-                    display: "contents",
+                    display: "flex",
+                    justifyContent: 'center',
                     padding: 2
                 }}
             >

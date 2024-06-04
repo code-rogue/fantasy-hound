@@ -1,4 +1,3 @@
-import '@css/index.css';
 import App from '@app/app';
 import { Provider } from 'react-redux';
 import React from 'react';

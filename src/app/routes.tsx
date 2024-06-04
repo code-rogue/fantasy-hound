@@ -1,4 +1,4 @@
-import AppFramework from '@app/appFramework';
+import AppFramework from '@components/app/framework';
 import ErrorPage from "@app/errorPage";
 import LandingPage from '@app/landingPage';
 import PlayerSearch from '@components/search/playerSearch';
@@ -14,7 +14,7 @@ export const AppRoutes = () => {
         <Routes>
           <Route element={<PrivateRoute/>}>
               <Route path='/' element={<AppFramework />} errorElement={<ErrorPage />}>
-                <Route path=':' element={<LandingPage />} />
+                <Route path='/' element={<LandingPage />} />
                 <Route path=':Search' element={<PlayerSearch />} />
                 <Route path=':Player/:PlayerId' element={<PlayerPage />} />
               </Route>
