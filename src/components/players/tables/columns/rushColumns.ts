@@ -13,6 +13,7 @@ export function rushCarriesColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatPlayerData(PlayerData.RushCarries, row.stats?.rush?.carries);
         },
+        width: 55,
     };
 }
 
@@ -27,6 +28,7 @@ export function rushYardsPerCarryColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatCalulatedStats(CalculatedData.RushYardsPerCarry, row);
         },
+        width: 65,
     };
 }
 
@@ -39,8 +41,9 @@ export function rushYardsColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'YDS', 
         valueGetter: (_v, row) => {
-          return formatPlayerData(PlayerData.RushYards, row.stats?.rush?.rush_yards);
+            return formatPlayerData(PlayerData.RushYards, row.stats?.rush?.rush_yards);
         },
+        width: 65,
     };
 }
 
@@ -53,8 +56,9 @@ export function rushFirstDownsColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'FD', 
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.RushFD, row.stats?.rush?.rush_first_downs);
+            return formatPlayerData(PlayerData.RushFD, row.stats?.rush?.rush_first_downs);
         },
+        width: 55,
     };
 }
 
@@ -67,8 +71,9 @@ export function rushTouchdownsColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'TD', 
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.RushTD, row.stats?.rush?.rush_tds);
+            return formatPlayerData(PlayerData.RushTD, row.stats?.rush?.rush_tds);
         },
+        width: 55,
     };
 }
 
@@ -81,8 +86,9 @@ export function rushTwoPointConvesionsColumn(): GridColDef {
         headerAlign: 'center',
         headerName: '2PT',
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.Rush2PT, row.stats?.rush?.rush_two_pt_conversions);
+            return formatPlayerData(PlayerData.Rush2PT, row.stats?.rush?.rush_two_pt_conversions);
         },
+        width: 55,
     };
 }
 
@@ -95,8 +101,9 @@ export function returnTouchdownsColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'Return TD', 
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.ReturnTD, row.stats?.rush?.special_teams_tds);
+            return formatPlayerData(PlayerData.ReturnTD, row.stats?.rush?.special_teams_tds);
         },
+        width: 100,
     };
 }
 
@@ -109,8 +116,9 @@ export function rushFumblesColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'FUM', 
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.RushFumbles, row.stats?.rush?.rush_fumbles);
+            return formatPlayerData(PlayerData.RushFumbles, row.stats?.rush?.rush_fumbles);
         },
+        width: 60,
     };
 } 
 
@@ -123,7 +131,8 @@ export function rushFumblesLostColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'LST', 
         valueGetter: (_v, row) => {
-        return formatPlayerData(PlayerData.RushFumblesLost, row.stats?.rush?.rush_fumbles_lost);
+            return formatPlayerData(PlayerData.RushFumblesLost, row.stats?.rush?.rush_fumbles_lost);
         },
+        width: 55,
     };
 }

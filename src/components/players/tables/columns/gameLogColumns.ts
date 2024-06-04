@@ -15,6 +15,7 @@ export function weekColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'Week', 
         hideable: false,
+        width: 65,
       };
 }
 
@@ -56,6 +57,7 @@ export function weekFanastyPointsColumn(ppr = true): GridColDef {
 
           return formatPlayerData(PlayerData.Points, row.fantasy_points);
         },
+        width: 80,
     }
 }
 

@@ -11,6 +11,7 @@ export function seasonColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'Season', 
         hideable: false,
+        width: 80,
       };
 }
 

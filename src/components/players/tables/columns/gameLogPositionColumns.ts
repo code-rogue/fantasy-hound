@@ -35,15 +35,16 @@ import {
     recTargetShareColumn,
     recTouchdownsColumn,
     recYardsColumn
-  } from '@components/players/tables/columns/recColumns';
-  import { 
+} from '@components/players/tables/columns/recColumns';
+import { 
     kickU40Column,
     kick40Column,
     kick50Column,
     kick60Column,
     kickTotalColumn,
     kickTotalPATColumn
-  } from '@components/players/tables/columns/kickColumns';
+} from '@components/players/tables/columns/kickColumns';
+
 export function gameLogPositionColumns(player?: Player): GridColDef[] {
     if(isQuaterBack(player)) {
         return [

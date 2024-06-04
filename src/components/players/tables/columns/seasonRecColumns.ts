@@ -14,6 +14,7 @@ export function seasonRecRACRColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecRACR, row.stats?.rec?.rec_air_conversion_ratio);
         },
+        width: 65,
     }
 }
 
@@ -28,6 +29,7 @@ export function seasonRecWOPRColumn(): GridColDef {
         valueGetter: (_v, row: SeasonData) => {
             return formatPlayerData(PlayerData.RecWOPR, row.stats?.rec?.weighted_opportunity_rating);
         },
+        width: 70,
     }
 }
 
@@ -40,7 +42,8 @@ export function seasonRecEPAColumn(): GridColDef {
         headerAlign: 'center',
         headerName: 'EPA', 
         valueGetter: (_v, row: SeasonData) => {
-        return formatPlayerData(PlayerData.RecEPA, row.stats?.rec?.rec_epa);
+            return formatPlayerData(PlayerData.RecEPA, row.stats?.rec?.rec_epa);
         },
+        width: 65,
     }
 }

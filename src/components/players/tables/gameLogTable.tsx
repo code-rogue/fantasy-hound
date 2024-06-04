@@ -1,9 +1,9 @@
 import { DataGrid } from '@mui/x-data-grid';
+import { gameLogPositionColumns } from '@components/players/tables/columns/gameLogPositionColumns';
 import { PlayerProps } from '@interfaces/models/player';
 import React from 'react';
-import { gameLogPositionColumns } from '@components/players/tables/columns/gameLogPositionColumns';
 
-const SeasonGameLogTable: React.FC<PlayerProps> = ({ player }) => {
+const GameLogTable: React.FC<PlayerProps> = ({ player }) => {
     const columns = gameLogPositionColumns(player);
     
     const weeks = player?.stats[0]?.weeks?.filter(week => week.week > 0 && week.week < 23) ?? [];
@@ -28,4 +28,4 @@ const SeasonGameLogTable: React.FC<PlayerProps> = ({ player }) => {
       );
 };
 
-export default SeasonGameLogTable;
+export default GameLogTable;

@@ -13,5 +13,6 @@ export function fumblesLostColumn(): GridColDef {
         valueGetter: (_v, row) => {
             return formatCalulatedStats(CalculatedData.FumblesLost, row);
         },
+        width: 65,
     }
 }

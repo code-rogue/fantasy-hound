@@ -1,10 +1,10 @@
 import Container from '@mui/material/Container';
-import React from 'react';
 import { Gauge } from '@mui/x-charts';
 import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import React from 'react';
+import TextField from '@mui/material/TextField';
 
 export interface PlayerStatData {
     data: StatData
@@ -40,8 +40,8 @@ const PlayerStatBoomBust: React.FC<PlayerStatData> = ({ data }) => {
                     ),
                 }}
                 multiline
-                rows={4}
-                sx={{ marginTop: 5, padding: 0, marginBottom: 2 }}
+                rows={3}
+                sx={{ marginTop: 4, padding: 0, marginBottom: 2 }}
             />
             <TextField 
                 id="Stat-avg" 
@@ -68,7 +68,7 @@ const PlayerStatBoomBust: React.FC<PlayerStatData> = ({ data }) => {
                     ),
                 }}
                 multiline
-                rows={4}
+                rows={3}
             />
         </Container>
     );

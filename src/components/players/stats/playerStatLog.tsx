@@ -1,15 +1,17 @@
 import Container from '@mui/material/Container';
+import FormControl from '@mui/material/FormControl';
 import { 
     getPlayerStat, 
     statDefinitionsByType, 
     statTooltipFormatter    
 } from '@components/players/utils/playerStatUtils';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import { NFL_POSITION_GROUPS } from '@interfaces/enums/position_groups.enums';
 import { PlayerProps } from '@interfaces/models/player';
-import { PlayerStats, PlayerStatsTypes } from '@interfaces/enums/player_stat.enums';
 import PlayerStatBoomBust from '@components/players/stats/playerStatBoomBust';
 import PlayerStatLineChart from '@components/players/stats/playerStatLineChart';
+import { PlayerStats, PlayerStatsTypes } from '@interfaces/enums/player_stat.enums';
 import React from 'react';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { StatData } from '@components/players/stats/playerStatBoomBust';
@@ -103,29 +105,37 @@ const PlayerStatLog: React.FC<PlayerProps> = ({ player }) => {
                     padding: 2
                 }}
             >
-                <Select
-                    labelId="select-position"
-                    id="position-select"
-                    value={statType.toString()}
-                    onChange={handleStatTypeChange}
-                    sx={{ marginTop: 1, marginRight: 1, zIndex: 1 }}
-                >
-                    <MenuItem value="0">Passing</MenuItem>
-                    <MenuItem value="1">Receiving</MenuItem>
-                    <MenuItem value="2">Rushing</MenuItem>
-                </Select>
-                <Select
-                    labelId="select-stat"
-                    id="stat-select"
-                    value={(stat === null) ? '-1' : stat.toString()}
-                    onChange={handleStatChange}
-                    sx={{ marginTop: 1, zIndex: 1 }}
-                >
-                    <MenuItem value="-1">Select a Stat</MenuItem>
-                    {statDefinitions.map(stat => {
-                        return <MenuItem key={stat.id} value={stat.id}>{stat.label}</MenuItem>
-                    })}
-                </Select>
+                <FormControl>
+                    <InputLabel id="select-position" sx={{ paddingTop: 1 }}>Type</InputLabel>
+                    <Select
+                        label='Type'
+                        labelId="select-position"
+                        id="position-select"
+                        value={statType.toString()}
+                        onChange={handleStatTypeChange}
+                        sx={{ marginTop: 1, marginRight: 1, zIndex: 1 }}
+                    >
+                        <MenuItem value="0">Passing</MenuItem>
+                        <MenuItem value="1">Receiving</MenuItem>
+                        <MenuItem value="2">Rushing</MenuItem>
+                    </Select>
+                    </FormControl>
+                    <FormControl>
+                        <InputLabel id="select-stat" sx={{ paddingTop: 1 }}>Stat</InputLabel>
+                        <Select
+                            label='Select a Stat'
+                            labelId="select-stat"
+                            id="stat-select"
+                            value={(stat === null) ? '-1' : stat.toString()}
+                            onChange={handleStatChange}
+                            sx={{ minWidth: 160, marginTop: 1, zIndex: 1 }}
+                        >
+                            <MenuItem value="-1">Select a Stat</MenuItem>
+                            {statDefinitions.map(stat => {
+                                return <MenuItem key={stat.id} value={stat.id}>{stat.label}</MenuItem>
+                            })}
+                        </Select>
+                </FormControl>
             </Container>
             
             <Container disableGutters maxWidth={false} sx={{ display: 'flex', height: 400, marginTop: -3 }}>

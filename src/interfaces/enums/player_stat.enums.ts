@@ -156,7 +156,7 @@ export enum PlayerStatLabels {
     PassAvgAirYards = "Average Air Yards",
     PassAvgAirYardsCompleted = "Average Air Yards (Completed)",
     PassAvgAirYardsIntended = "Avgerage Air Yards (Intended)",
-    PassAvgAirYardsToSticks = "Average Air Yards (To Sticks))",
+    PassAvgAirYardsToSticks = "Average Air Yards (To Sticks)",
     PassAvgTimeToThrow = "Average Time to Throw",
     PassBadThrowPct = "Bad Throw Percentage",
     PassBadThrows = "Bad Throws",
