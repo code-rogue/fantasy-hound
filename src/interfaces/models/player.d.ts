@@ -27,7 +27,7 @@ export interface Player {
     years_of_experience: string | null,
     team?: TeamData,
     rookie_year: string,
-    draft_team: string,
+    draft_team: TeamData,
     draft_number: string,
     draft_round: string,
     season: string,

@@ -10,6 +10,7 @@ import { WeekRush } from '@interfaces/models/week/weekRush';
 import { WeekNextGenPass } from '@interfaces/models/week/nextGen/weekNextGenPass';
 import { WeekNextGenRec } from '@interfaces/models/week/nextGen/weekNextGenRec';
 import { WeekNextGenRush } from '@interfaces/models/week/nextGen/weekNextGenRush';
+import { TeamData } from '@interfaces/models/team';
 
 export interface WeekData {
     id: number;
@@ -18,7 +19,8 @@ export interface WeekData {
     season: string;
     week: number;
     game_type: string;
-    opponent: string;
+    team: TeamData;
+    opponent: TeamData;
     fantasy_points: number;
     fantasy_points_ppr: number;
     advanced: {

@@ -64,7 +64,7 @@ const PlayerProfile: React.FC<PlayerProps> = ({ player }) => {
                 <ListItemText primary={formatPlayerData(PlayerData.DraftNumber, player?.draft_number)} secondary="Drafted" />
               </ListItem>
               <ListItem>
-                <ListItemText primary={formatPlayerData(PlayerData.DraftedBy, player?.draft_team)} secondary="Drafted By" />
+                <ListItemText primary={formatPlayerData(PlayerData.DraftedBy, player?.draft_team?.full_name)} secondary="Drafted By" />
               </ListItem>
             </List>
             

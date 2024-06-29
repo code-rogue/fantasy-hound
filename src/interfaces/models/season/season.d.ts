@@ -8,6 +8,7 @@ import { SeasonPass } from '@interfaces/models/season/seasonPass';
 import { SeasonRec } from '@interfaces/models/season/seasonRec';
 import { SeasonRush } from '@interfaces/models/season/seasonRush';
 import { weekData } from '@interfaces/models/week/week';
+import { TeamData } from '@interfaces/models/team';
 
 export interface SeasonData {
     id?: number,
@@ -16,6 +17,7 @@ export interface SeasonData {
     age?: number,
     games_played?: number,
     games_started?: number,
+    team?; TeamData,
     fantasy_points?: number,
     fantasy_points_ppr?: number,
     advanced?: {

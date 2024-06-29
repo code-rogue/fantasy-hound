@@ -273,7 +273,7 @@ export function formatCalulatedWeekStats(stat: CalculatedData, data?: WeekData |
     switch (stat) {
         case CalculatedData.WeekGameOppType: {
             const { game_type, opponent } = data
-            return `${opponent} (${game_type})`;
+            return `${opponent.name} (${game_type})`;
         }
         default:
             return UNAVAILABLE;
