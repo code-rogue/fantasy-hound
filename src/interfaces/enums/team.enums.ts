@@ -18,7 +18,9 @@ export enum NFL_TEAMS {
     KC = 'KC',
     LA = 'LA',
     LAC = 'LAC',
+    LAR = 'LAR',
     LV = 'LV',
+    LVR = 'LVR',
     MIA = 'MIA',
     MIN = 'MIN',
     NE = 'NE',
@@ -35,6 +37,8 @@ export enum NFL_TEAMS {
     TB = 'TB',
     TEN = 'TEN',
     WAS = 'WAS',
+    TwoTM = '2TM',
+    ThreeTM = '3TM',
 }
 
 export enum NFL_TEAM_NAMES {
@@ -74,4 +78,6 @@ export enum NFL_TEAM_NAMES {
     TB = 'Tampa Bay Buccaneers',
     TEN = 'Tennessee Titans',
     WAS = 'Washington Commanders',
+    TwoTM = '2 Teams',
+    ThreeTM = '3 Teams',
 }
